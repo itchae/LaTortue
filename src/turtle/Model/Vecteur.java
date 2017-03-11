@@ -31,6 +31,10 @@ public class Vecteur {
 		return "(x=" + this.x + ", y=" + this.y + ")";
 	}
 	
+	public static Vecteur somme(Vecteur v1 , Vecteur v2){
+		return new Vecteur(v1.getX()+v2.getX() , v1.getY()+ v2.getY());
+	}
+	
 	
 
 }

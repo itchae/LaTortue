@@ -43,8 +43,7 @@ public class Motif {
 	
 	public static void main(String[] args){
 		List<Vecteur> chemin = new ArrayList<Vecteur>();
-		chemin.add(new Vecteur(0,1));
-		chemin.add(new Vecteur(0,1));
+		chemin.add(new Vecteur(0,2));
 		chemin.add(new Vecteur(1,0));
 		Motif m = new Motif(chemin);
 		System.out.println(m);

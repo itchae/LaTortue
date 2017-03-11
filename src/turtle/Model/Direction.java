@@ -46,7 +46,8 @@ public class Direction {
 
 	@Override
 	public String toString() {
-		return "Direction [chemin=" + this.chemin + "]";
+		Vecteur diago = this.getVectDiagonalRect();
+		return "Direction [chemin=" + this.chemin + ", largeur="+diago.getX()+" hauteur="+diago.getY()+" mouv="+this.getVectMouvement()+"]";
 	}
 
 
@@ -65,6 +66,34 @@ public class Direction {
 		} else if (!this.chemin.equals(other.chemin))
 			return false;
 		return true;
+	}
+	
+	/**
+	 * renvoi un vecteur qui represente la diagonale du plus petit carre contenant la Direction selon le point d'origine 0,0
+	 * @return
+	 */
+	public Vecteur getVectDiagonalRect(){
+		Vecteur min = new Vecteur(0,0);
+		Vecteur max = new Vecteur(0,0);
+		Vecteur pointAct = new Vecteur(0,0);
+		for(Vecteur v : this.chemin){
+			pointAct = Vecteur.somme(pointAct, v);
+			if(pointAct.getX() > max.getX()) max.setX(pointAct.getX());
+			if(pointAct.getX() < min.getX()) min.setX(pointAct.getX());
+			if(pointAct.getY() > max.getY()) max.setY(pointAct.getY());
+			if(pointAct.getY() < min.getY()) min.setY(pointAct.getY());
+			
+		}
+		return new Vecteur(max.getX()-min.getX() , max.getY()-min.getY());
+		
+	}
+	
+	public Vecteur getVectMouvement(){
+		Vecteur pointAct = new Vecteur(0,0);
+		for(Vecteur v : this.chemin){
+			pointAct = Vecteur.somme(pointAct, v);
+		}
+		return pointAct;
 	}
 
 	
