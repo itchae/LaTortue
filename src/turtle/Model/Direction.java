@@ -88,6 +88,10 @@ public class Direction {
 		
 	}
 	
+	/**
+	 * donne le vecteur qui corespond au deplacement total de la direction
+	 * @return
+	 */
 	public Vecteur getVectMouvement(){
 		Vecteur pointAct = new Vecteur(0,0);
 		for(Vecteur v : this.chemin){

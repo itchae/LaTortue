@@ -34,6 +34,25 @@ public class Vecteur {
 	public static Vecteur somme(Vecteur v1 , Vecteur v2){
 		return new Vecteur(v1.getX()+v2.getX() , v1.getY()+ v2.getY());
 	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Vecteur other = (Vecteur) obj;
+		if (this.x != other.x)
+			return false;
+		if (this.y != other.y)
+			return false;
+		return true;
+	}
+	
+	
 	
 	
 
