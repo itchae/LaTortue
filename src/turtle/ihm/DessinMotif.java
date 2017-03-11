@@ -13,7 +13,6 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
@@ -22,7 +21,7 @@ import javax.swing.border.LineBorder;
 import turtle.Model.Motif;
 import turtle.Model.Vecteur;
 
-public class DessinMotif extends /*Grille*/ JComponent {
+public class DessinMotif extends Grille {
 
 	private static final long serialVersionUID = -549604409144143552L;
 	private static final int largeurCrayon = 3;
@@ -32,9 +31,21 @@ public class DessinMotif extends /*Grille*/ JComponent {
 
 
 	public DessinMotif(Motif motif) {
+		super(0,0);
 		this.motif = motif;
 		this.setPreferredSize(new Dimension(50,50));
 		this.setBorder(new LineBorder(Color.BLACK));
+		
+	}
+	
+	private void calculTailleGrille(){
+		Vecteur rectMinimal = motif.getVectDiagonalRect();
+		this.setNbligne(rectMinimal.getY()+ 2);
+		this.setNbcolonne(rectMinimal.getX()+ 2);
+		if(this.getNbcolonne() %2 != 0) this.setNbcolonne(this.getNbcolonne()+1);
+		if(this.getNbligne() %2 != 0) this.setNbligne(this.getNbligne()+1);
+		
+		
 	}
 
 	public Motif getMotif() {
@@ -55,6 +66,8 @@ public class DessinMotif extends /*Grille*/ JComponent {
 	@Override
 	protected void paintComponent(Graphics graphics) {
 		Graphics gra = graphics.create();
+
+		this.calculTailleGrille();
 		super.paintComponent(gra);
 		
 		Graphics2D g = (Graphics2D) gra;
@@ -66,10 +79,12 @@ public class DessinMotif extends /*Grille*/ JComponent {
 		Vecteur point = new Vecteur(-mouvTotal.getX()/2 , -mouvTotal.getY()/2);	//calcul du decalage pour centrer la figure sur le (0.0) fictif
 		Iterator<Vecteur> i = this.motif.getIteratorDeplacement();
 		
-		int tailleColonne = 10;
-		int tailleLigne = 10 ;
-		int xZero = (int) (this.getSize().getWidth()/2);	//faire avec le nbCol et largeurCol
-		int yZero = (int) (this.getSize().getHeight()/2);	//faire avec le nbLigne et longeurLign
+		
+		
+		int tailleColonne = this.getTailleColonne();
+		int tailleLigne = this.getTailleLigne() ;
+		int xZero = (int) (this.getNbcolonne()/2)*tailleColonne;	
+		int yZero = (int) (this.getNbligne()/2)*tailleLigne;	
 		
 		g.setStroke(new BasicStroke(DessinMotif.largeurCrayon));
 		g.setColor(DessinMotif.color);

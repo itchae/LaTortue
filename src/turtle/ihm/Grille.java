@@ -27,6 +27,7 @@ abstract class Grille extends JComponent {
 		frameGrille.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}*/
 
+	private static final long serialVersionUID = -7649907374135164257L;
 	private int nbligne;
 	private int nbcolonne;
 	
@@ -38,7 +39,7 @@ abstract class Grille extends JComponent {
 	
 	
 	@Override
-	public void paintComponent (Graphics graphics){
+	protected void paintComponent (Graphics graphics){
 		Graphics gra = graphics.create();
 		int xmax = (int) this.getSize().getWidth();
 		int ymax = (int) this.getSize().getHeight();
@@ -51,6 +52,36 @@ abstract class Grille extends JComponent {
 			gra.drawLine(0, y, xmax, y);
 		}
 	}
+
+
+	public int getNbligne() {
+		return this.nbligne;
+	}
+
+
+	public int getNbcolonne() {
+		return this.nbcolonne;
+	}
+	
+	protected int getTailleLigne(){
+		return (int) this.getSize().getHeight()/this.nbligne;
+	}
+	
+	protected int getTailleColonne(){
+		return (int) this.getSize().getWidth()/this.nbcolonne;
+	}
+
+
+	protected void setNbligne(int nbligne) {
+		this.nbligne = nbligne;
+	}
+
+
+	protected void setNbcolonne(int nbcolonne) {
+		this.nbcolonne = nbcolonne;
+	}
+	
+	
 	
 
 }
