@@ -124,13 +124,6 @@ public static void main(String[] args){
 		}
 	});
 		
-	
-
-		/*List<Vecteur> chemin2 = new ArrayList<Vecteur>();
-		chemin2.add(new Vecteur(2,0));
-		Motif m2 = new Motif(chemin2);
-		System.out.println("Motif 2\n"+m2);*/
-		
 	}
 	
 	
