@@ -11,6 +11,13 @@ public class Tortue {
 	private Vecteur coordonnee;
 	private boolean draw;
 	private Motif motif;
+	
+	public Tortue(){
+		this.color = Color.BLACK;
+		this.coordonnee = new Vecteur(0,0);
+		this.draw = false;
+		this.motif = Motif.getDefaultMotif().get(0);
+	}
 
 	public Color getColor() {
 		return this.color;
