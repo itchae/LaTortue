@@ -1,5 +1,6 @@
 package turtle.Model;
 
+import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -46,8 +47,7 @@ public class Direction {
 
 	@Override
 	public String toString() {
-		Vecteur diago = this.getVectDiagonalRect();
-		return "Direction [chemin=" + this.chemin + ", largeur="+diago.getX()+" hauteur="+diago.getY()+" mouv="+this.getVectMouvement()+"]";
+		return "Direction [chemin=" + this.chemin + ", mouv="+this.getVectMouvement()+"]";
 	}
 
 
@@ -72,7 +72,7 @@ public class Direction {
 	 * renvoi un vecteur qui represente la diagonale du plus petit carre contenant la Direction selon le point d'origine 0,0
 	 * @return
 	 */
-	public Vecteur getVectDiagonalRect(){
+	public Rectangle getVectDiagonalRect(){
 		Vecteur min = new Vecteur(0,0);
 		Vecteur max = new Vecteur(0,0);
 		Vecteur pointAct = new Vecteur(0,0);
@@ -84,7 +84,7 @@ public class Direction {
 			if(pointAct.getY() < min.getY()) min.setY(pointAct.getY());
 			
 		}
-		return new Vecteur(max.getX()-min.getX() , max.getY()-min.getY());
+		return new Rectangle(min.getX(),min.getY(),max.getX()-min.getX() , max.getY()-min.getY());
 		
 	}
 	

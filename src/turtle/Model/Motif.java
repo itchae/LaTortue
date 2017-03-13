@@ -1,5 +1,6 @@
 package turtle.Model;
 
+import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -59,7 +60,7 @@ public class Motif {
 	 * renvoie un vecteur qui represente la diagonale du plus petit carre contenant la Direction selon le point d'origine 0,0
 	 * @return
 	 */
-	public Vecteur getVectDiagonalRect(){
+	public Rectangle getVectDiagonalRect(){
 
 		return this.listDir.get(this.dirActuel).getVectDiagonalRect();
 		
@@ -102,6 +103,14 @@ public class Motif {
 		chemin.add( new Vecteur(1,1));
 		chemin.add( new Vecteur(0,1));
 		chemin.add( new Vecteur(1,-1));
+		motifs.add( new Motif(chemin));
+		
+		chemin.clear();
+		chemin.add( new Vecteur(0,8));
+		chemin.add( new Vecteur(1,0));
+		chemin.add( new Vecteur(0,-8));
+		chemin.add( new Vecteur(-1,0));
+
 		motifs.add( new Motif(chemin));
 		
 		return motifs;

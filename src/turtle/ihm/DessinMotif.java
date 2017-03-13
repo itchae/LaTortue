@@ -6,6 +6,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -39,9 +40,9 @@ public class DessinMotif extends Grille {
 	}
 	
 	private void calculTailleGrille(){
-		Vecteur rectMinimal = motif.getVectDiagonalRect();
-		this.setNbligne(rectMinimal.getY()+ 2);
-		this.setNbcolonne(rectMinimal.getX()+ 2);
+		Rectangle rectMinimal = motif.getVectDiagonalRect();
+		this.setNbligne(rectMinimal.height+ 2);
+		this.setNbcolonne(rectMinimal.width+ 2);
 		if(this.getNbcolonne() %2 != 0) this.setNbcolonne(this.getNbcolonne()+1);
 		if(this.getNbligne() %2 != 0) this.setNbligne(this.getNbligne()+1);
 		
@@ -75,8 +76,8 @@ public class DessinMotif extends Grille {
 		//calcul du pt origine et taille ligne et colonne
 		//la taille de la grille ne change pas selon la rotation du motif
 		//on concidere (0,0) au centre de l'écran
-		Vecteur mouvTotal = this.motif.getVectMouvement();
-		Vecteur point = new Vecteur(-mouvTotal.getX()/2 , -mouvTotal.getY()/2);	//calcul du decalage pour centrer la figure sur le (0.0) fictif
+		Rectangle rect = this.motif.getVectDiagonalRect();
+		Vecteur point = new Vecteur(-rect.x -(rect.width/2) , -rect.y -(rect.height/2));	//calcul du decalage pour centrer la figure sur le (0.0) fictif
 		Iterator<Vecteur> i = this.motif.getIteratorDeplacement();
 		
 		
@@ -90,8 +91,8 @@ public class DessinMotif extends Grille {
 		g.setColor(DessinMotif.color);
 		
 		//dessin de la piece
-
-		g.drawOval(xZero+(point.getX()*tailleColonne)-DessinMotif.largeurCrayon,yZero+(-point.getY()*tailleLigne)-DessinMotif.largeurCrayon, DessinMotif.largeurCrayon*2 , DessinMotif.largeurCrayon*2);
+		int largCray = DessinMotif.largeurCrayon;
+		g.drawOval(xZero+(point.getX()*tailleColonne)- largCray,yZero+(-point.getY()*tailleLigne)-largCray, largCray*2 , largCray*2);
 		while(i.hasNext()){
 			Vecteur deplacement = i.next();
 			int nextX =  point.getX()+deplacement.getX();

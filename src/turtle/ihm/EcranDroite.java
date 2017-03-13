@@ -40,6 +40,7 @@ public class EcranDroite extends JPanel {
 		Box vBox = Box.createVerticalBox();
 		this.add(vBox);
 		JScrollPane scroll = new JScrollPane(this.selecteur);
+		scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
 		vBox.add(scroll);
 		Box hBox = Box.createHorizontalBox();
 		vBox.add(Box.createVerticalGlue());
