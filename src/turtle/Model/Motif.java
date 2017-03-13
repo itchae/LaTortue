@@ -47,6 +47,8 @@ public class Motif {
 		return text;
 	}
 	
+	
+	
 	public Iterator<Vecteur> getIteratorDeplacement(){
 		return this.listDir.get(this.dirActuel).getIteratorDeplacement();
 	}

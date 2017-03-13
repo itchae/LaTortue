@@ -1,6 +1,9 @@
 package turtle.Model;
 
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Tortue {
 
@@ -29,41 +32,68 @@ public class Tortue {
 		this.motif = motif;
 	}
 
-	public void go() {
-		// TODO - implement Tortue.go
-		throw new UnsupportedOperationException();
-	}
-
+	
 	/**
-	 * 
+	 * Execute go, si draw = true alors dessine motif sinon juste déplacement tortue 
 	 * @param k
 	 */
-	public void go(int k) {
-		// TODO - implement Tortue.go
-		throw new UnsupportedOperationException();
-	}
-
-	public void turn() {
-		// TODO - implement Tortue.turn
-		throw new UnsupportedOperationException();
+	public List<Vecteur> go() {
+		List<Vecteur> liste = new ArrayList<Vecteur>();
+		if(draw){
+			while (motif.getIteratorDeplacement().hasNext()){
+				Vecteur v = motif.getIteratorDeplacement().next();
+				this.coordonnee = Vecteur.somme(this.coordonnee, v);
+				liste.add(this.coordonnee);
+			}
+		}else{
+			this.coordonnee = Vecteur.somme(this.coordonnee, motif.getVectMouvement());
+			liste.add(this.coordonnee);
+		}
+		return liste;
 	}
 
 	/**
-	 * 
+	 * Execute k fois go
+	 * @param k
+	 */
+	public List<Vecteur> go(int k) {
+		List<Vecteur> liste = new ArrayList<Vecteur>();
+		for(int i = 0 ; i<k ; i++){
+			liste.addAll(this.go());
+		}
+		return liste;
+	}
+
+	
+	/**
+	 * Tourne le motif
+	 * @param k
+	 */
+	public void turn() {
+		this.motif.turn();
+	}
+
+	
+	/**
+	 * Tourne le motif k fois
 	 * @param k
 	 */
 	public void turn(int k) {
-		// TODO - implement Tortue.turn
-		throw new UnsupportedOperationException();
+		for (int i = 0 ; i<k ; i++){
+			this.turn();
+		}
 	}
 
 	/**
 	 * 
 	 * @param enable
 	 */
-	public void draw(boolean enable) {
-		// TODO - implement Tortue.draw
-		throw new UnsupportedOperationException();
+	public void setDraw(boolean enable) {
+		this.draw = enable;
+	}
+	
+	public Motif getMotif(){
+		return this.motif;
 	}
 
 }
