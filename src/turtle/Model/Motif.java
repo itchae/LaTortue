@@ -16,10 +16,11 @@ public class Motif {
 		this.addDirection(this.listDir.get(0).inverseSens());
 		
 
-		for(int i =0 ; i <this.listDir.size() ; i++){	//calcul des rotation possible
+		for(int i =0 ; i <this.listDir.size() ; i++){	//calcul des rotations possible
 			this.addDirection(this.listDir.get(i).rotation());		
 		}
 	}
+	
 	
 	private void addDirection(Direction d){
 		if(!this.listDir.contains(d)){
@@ -53,8 +54,9 @@ public class Motif {
 		return this.listDir.get(this.dirActuel).getIteratorDeplacement();
 	}
 	
+	
 	/**
-	 * renvoi un vecteur qui represente la diagonale du plus petit carre contenant la Direction selon le point d'origine 0,0
+	 * renvoie un vecteur qui represente la diagonale du plus petit carre contenant la Direction selon le point d'origine 0,0
 	 * @return
 	 */
 	public Vecteur getVectDiagonalRect(){
@@ -64,7 +66,7 @@ public class Motif {
 	}
 	
 	/**
-	 * donne le vecteur qui corespond au deplacement total du motif actuel
+	 * Donne le vecteur qui corespond au deplacement total du motif actuel
 	 * @return
 	 */
 	public Vecteur getVectMouvement(){
