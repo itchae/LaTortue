@@ -29,12 +29,12 @@ public class Instructions {
 		sliders.add(boxTurn("Turn"));
 		sliders.add(boxTurn("Go"));
 		
-		Box couleurs = Box.createHorizontalBox();
+		JPanel couleurs = new JPanel();
 		couleurs.add(panelCoul(Color.GREEN));
 		couleurs.add(panelCoul(Color.BLUE));
 		couleurs.add(panelCoul(Color.RED));
 		couleurs.add(panelCoul(Color.YELLOW));
-			
+
 		Box drawBox = Box.createHorizontalBox();
 		JCheckBox draw = new JCheckBox();
 		JLabel drawText = new JLabel("Draw");
