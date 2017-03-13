@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.SwingUtilities;
+import javax.swing.border.LineBorder;
 
 public class Instructions {
 
@@ -60,7 +61,9 @@ public class Instructions {
 		slide.setMinimum(0);
 		slide.setValue(0);
 		
+		
 		JLabel nbSlide = new JLabel(" " + slide.getValue());
+		slide.addChangeListener(new SliderListener(nbSlide));
 		
 		
 
