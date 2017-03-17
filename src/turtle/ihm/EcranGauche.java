@@ -25,10 +25,10 @@ public class EcranGauche extends JPanel {
 	
 	private void createBlocInstruction(boolean debutant , Tortue t ,JComponent dessinMotif, JComponent afficheurCoul){
 		if(debutant){
-			this.blocInstruction = new Instruction(t,dessinMotif,afficheurCoul);
+			this.blocInstruction = new Instructions(t,dessinMotif,afficheurCoul);
 		}
 		else{
-			this.blocInstruction = new Instruction(t,dessinMotif,afficheurCoul);
+			this.blocInstruction = new Instructions(t,dessinMotif,afficheurCoul);
 		}
 	}
 
