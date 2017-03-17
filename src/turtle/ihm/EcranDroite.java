@@ -1,6 +1,7 @@
 package turtle.ihm;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,16 +44,16 @@ public class EcranDroite extends JPanel {
 		Box vBox = Box.createVerticalBox();
 		this.add(vBox);
 		JScrollPane scroll = new JScrollPane(this.selecteur);
-		scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+		scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		vBox.add(scroll);
 		Box hBox = Box.createHorizontalBox();
-		vBox.add(Box.createVerticalGlue());
+		vBox.add(Box.createRigidArea(new Dimension(0,10)));
 		vBox.add(hBox);
 		hBox.add(this.motifActuel);
 		hBox.add(this.couleurActuel);
 		
 		JPanel buttonPanel = new JPanel(new GridLayout(2,2));
-		vBox.add(Box.createVerticalGlue());
+		vBox.add(Box.createRigidArea(new Dimension(0,10)));
 		vBox.add(buttonPanel);
 		for(JButton b : this.buttons){
 			buttonPanel.add(b);
@@ -68,6 +69,16 @@ public class EcranDroite extends JPanel {
 	
 	public JComponent getColorPanel(){
 		return this.couleurActuel;
+	}
+	
+	
+
+
+	@Override
+	public void setPreferredSize(Dimension preferredSize) {
+		
+		super.setPreferredSize(preferredSize);
+		this.selecteur.setPreferredSize(new Dimension((int) (preferredSize.width*0.8),preferredSize.height));
 	}
 
 

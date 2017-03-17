@@ -1,5 +1,6 @@
 package turtle.ihm;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JSlider;
 
 import turtle.Model.Tortue;
@@ -20,21 +22,24 @@ public class Instructions extends JPanel{
 	private static final long serialVersionUID = 2749854200229887457L;
 	private List<JButton> boutons; 
 	private List<JSlider> sliders;
+	private JPanel panelCouleur;
 	
 	public Instructions (Tortue T, JComponent dessin, JComponent afficheurCouleur){
-		super();
+		super(new BorderLayout());
 		Box mainBox = Box.createVerticalBox();
 		this.boutons = new ArrayList<JButton>();
 		this.sliders = new ArrayList<JSlider>();
 		
 		Box sliders = Box.createVerticalBox();
 		sliders.add(boxTurn("Turn"));
+		sliders.add(Box.createRigidArea(new Dimension(0,5)));
 		sliders.add(boxTurn("Go"));
 		
 		this.boutons.get(0).addActionListener(new TurnListener(T, this.sliders.get(0),dessin));
 		this.boutons.get(1).addActionListener(new TurnListener(T, this.sliders.get(1),dessin));
 		
 		JPanel couleurs = new JPanel();
+		this.panelCouleur = couleurs;
 		couleurs.add(panelCoul(Color.GREEN, afficheurCouleur, T));
 		couleurs.add(panelCoul(Color.BLUE, afficheurCouleur, T));
 		couleurs.add(panelCoul(Color.RED, afficheurCouleur, T));
@@ -50,8 +55,13 @@ public class Instructions extends JPanel{
 		drawBox.add(draw);
 		drawBox.add(drawText);
 		
+		mainBox.add(Box.createRigidArea(new Dimension(0,5)));
 		mainBox.add(sliders);
-		mainBox.add(couleurs);
+		mainBox.add(Box.createRigidArea(new Dimension(0,5)));
+		JScrollPane scroll = new JScrollPane(couleurs);
+		scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		scroll.setMinimumSize(new Dimension(40,40));
+		mainBox.add(scroll);
 		mainBox.add(drawBox);
 		this.add(mainBox);
 		this.setVisible(true);
@@ -83,10 +93,20 @@ public class Instructions extends JPanel{
 	public static JPanel panelCoul(Color color, JComponent afficheur, Tortue T){
 		JPanel coulPane = new JPanel();
 		coulPane.setBackground(color);
-		coulPane.setPreferredSize(new Dimension(70,70));
+		coulPane.setPreferredSize(new Dimension(30,30));
 		coulPane.addMouseListener(new ColorListener(T, afficheur));
 		return coulPane;		
 	}
+
+	@Override
+	public void setPreferredSize(Dimension preferredSize) {
+		super.setPreferredSize(preferredSize);
+		this.panelCouleur.setPreferredSize(new Dimension((int) (preferredSize.width*0.8),preferredSize.height));
+	}
+
+
+	
+	
 
 
 }

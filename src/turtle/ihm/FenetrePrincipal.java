@@ -33,6 +33,7 @@ public class FenetrePrincipal extends JFrame {
 		this.add(this.gauche,BorderLayout.WEST);
 
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		this.addComponentListener(new ResizeWindow(this.droite,this.central,this.gauche));
 		
 	}
 	

@@ -7,7 +7,7 @@ public class TextInstruction extends JTextArea {
 	private static final long serialVersionUID = 4656126438656706594L;
 
 	public TextInstruction() {
-		super();
+		super(10,1);
 	}
 
 }
