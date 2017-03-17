@@ -16,7 +16,7 @@ public class Tortue {
 		this.color = Color.BLACK;
 		this.coordonnee = new Vecteur(0,0);
 		this.draw = false;
-		this.motif = Motif.getDefaultMotif().get(0);
+		this.motif = null;
 	}
 
 	public Color getColor() {

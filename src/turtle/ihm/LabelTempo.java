@@ -30,6 +30,10 @@ public class LabelTempo extends JLabel  {
 			
 		});
 	}
+	
+	public LabelTempo(int time){
+		this("",time);
+	}
 
 
 		public static void main(String[] args) {

@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.swing.Box;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -25,8 +26,10 @@ public class EcranDroite extends JPanel {
 
 	public EcranDroite(Tortue tortue , JFrame fenetre){
 		super(new BorderLayout());
+		List<Motif> listMotif = Motif.getDefaultMotif();
+		tortue.setMotif(listMotif.get(0));
 		this.motifActuel = new DessinMotif(tortue.getMotif());
-		this.selecteur = new SelecteurMotif(Motif.getDefaultMotif(),tortue , this.motifActuel);
+		this.selecteur = new SelecteurMotif(listMotif,tortue , this.motifActuel);
 		this.couleurActuel = new JPanel();
 		this.couleurActuel.setPreferredSize(this.motifActuel.getPreferredSize());
 		this.couleurActuel.setBackground(DessinMotif.color);
@@ -57,6 +60,12 @@ public class EcranDroite extends JPanel {
 		
 		
 	}
+
+	
+	public JComponent getMotifActuel() {
+		return (JComponent) this.motifActuel;
+	}
+
 
 	public static void main(String[] args){
 		
