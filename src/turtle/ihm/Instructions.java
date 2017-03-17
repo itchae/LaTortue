@@ -6,24 +6,16 @@ import java.awt.Dimension;
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
-import javax.swing.SwingUtilities;
-import javax.swing.border.LineBorder;
 
-public class Instructions {
+public class Instructions extends JPanel{
 
-	public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run () {makeIt();}
-		});
+	private static final long serialVersionUID = 2749854200229887457L;
 
-	}
-
-	protected static void makeIt() {
-		JFrame frameInstruction = new JFrame("Grille");
+	public Instructions (){
+		super();
 		Box mainBox = Box.createVerticalBox();
 
 		Box sliders = Box.createVerticalBox();
@@ -45,10 +37,8 @@ public class Instructions {
 		mainBox.add(sliders);
 		mainBox.add(couleurs);
 		mainBox.add(drawBox);
-		frameInstruction.add(mainBox);
-		frameInstruction.pack();
-		frameInstruction.setVisible(true);
-		frameInstruction.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.add(mainBox);
+		this.setVisible(true);
 	}
 	
 	public static Box boxTurn(String str){
@@ -60,13 +50,10 @@ public class Instructions {
 		slide.setMaximum(8);
 		slide.setMinimum(0);
 		slide.setValue(0);
-		
-		
+			
 		JLabel nbSlide = new JLabel(" " + slide.getValue());
 		slide.addChangeListener(new SliderListener(nbSlide));
 		
-		
-
 		fois.add(nbSlide);
 		fois.add(slide);
 		fois.add(bouton);
@@ -77,7 +64,6 @@ public class Instructions {
 		JPanel coulPane = new JPanel();
 		coulPane.setBackground(color);
 		coulPane.setPreferredSize(new Dimension(70,70));
-		return coulPane;
-		
+		return coulPane;		
 	}
 }
