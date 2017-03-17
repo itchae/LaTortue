@@ -2,7 +2,6 @@ package turtle.ihm;
 
 import java.awt.Color;
 import java.awt.Dimension;
-
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -14,6 +13,8 @@ public class Instructions extends JPanel{
 
 	private static final long serialVersionUID = 2749854200229887457L;
 
+	JCheckBox draw = new JCheckBox();
+	
 	public Instructions (){
 		super();
 		Box mainBox = Box.createVerticalBox();
@@ -29,7 +30,7 @@ public class Instructions extends JPanel{
 		couleurs.add(panelCoul(Color.YELLOW));
 
 		Box drawBox = Box.createHorizontalBox();
-		JCheckBox draw = new JCheckBox();
+		
 		JLabel drawText = new JLabel("Draw");
 		drawBox.add(draw);
 		drawBox.add(drawText);
@@ -43,9 +44,10 @@ public class Instructions extends JPanel{
 	
 	public static Box boxTurn(String str){
 		Box fois = Box.createHorizontalBox();
-		JButton bouton = new JButton(str);
 		
+		JButton bouton = new JButton(str);
 		bouton.setPreferredSize(new Dimension(80,40));
+
 		JSlider slide = new JSlider(); //0 à 8 
 		slide.setMaximum(8);
 		slide.setMinimum(0);
@@ -66,4 +68,6 @@ public class Instructions extends JPanel{
 		coulPane.setPreferredSize(new Dimension(70,70));
 		return coulPane;		
 	}
+
+
 }
