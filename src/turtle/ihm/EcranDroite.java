@@ -63,7 +63,11 @@ public class EcranDroite extends JPanel {
 
 	
 	public JComponent getMotifActuel() {
-		return (JComponent) this.motifActuel;
+		return this.motifActuel;
+	}
+	
+	public JComponent getColorPanel(){
+		return this.couleurActuel;
 	}
 
 

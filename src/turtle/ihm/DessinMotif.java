@@ -17,7 +17,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
-import javax.swing.border.LineBorder;
 
 import turtle.Model.Motif;
 import turtle.Model.Vecteur;
@@ -35,7 +34,6 @@ public class DessinMotif extends Grille {
 		super(0,0);
 		this.motif = motif;
 		this.setPreferredSize(new Dimension(50,50));
-		this.setBorder(new LineBorder(Color.BLACK));
 		
 	}
 	

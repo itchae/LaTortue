@@ -14,19 +14,23 @@ public class FenetrePrincipal extends JFrame {
 	private static final long serialVersionUID = -219028337465163564L;
 	private JLabel textEtat;
 	private JComponent central;
-	private JComponent droite;
+	private EcranDroite droite;
+
+	private JComponent gauche;
 	private Tortue tortue;
 
-	public FenetrePrincipal(){
+	public FenetrePrincipal(boolean debutant){
 		super();
 		this.textEtat = new LabelTempo(3000);
 		this.central = new EcranCentral(10,10);
 		this.tortue = new Tortue();
 		this.droite = new EcranDroite(this.tortue,this);
+		this.gauche = new EcranGauche(debutant,this.tortue , this.droite.getMotifActuel() , this.droite.getColorPanel());
 		
 		this.add(this.central);
 		this.add(this.droite,BorderLayout.EAST);
 		this.add(this.textEtat , BorderLayout.SOUTH);
+		this.add(this.gauche,BorderLayout.WEST);
 
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
@@ -39,7 +43,7 @@ public class FenetrePrincipal extends JFrame {
 			
 			@Override
 			public void run() {
-				JFrame f = new FenetrePrincipal();
+				JFrame f = new FenetrePrincipal(true);
 				f.pack();
 				f.setVisible(true);
 				

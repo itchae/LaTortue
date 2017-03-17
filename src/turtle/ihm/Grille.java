@@ -1,7 +1,9 @@
 package turtle.ihm;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JComponent;
+import javax.swing.border.LineBorder;
 
 /*import java.awt.Dimension;
 import javax.swing.JFrame;
@@ -35,6 +37,8 @@ abstract class Grille extends JComponent {
 		super();
 		this.nbcolonne = colonne;
 		this.nbligne = ligne;
+
+		this.setBorder(new LineBorder(Color.BLACK));
 	}
 	
 	
