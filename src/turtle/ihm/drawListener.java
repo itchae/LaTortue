@@ -7,10 +7,10 @@ import javax.swing.JCheckBox;
 
 import turtle.Model.Tortue;
 
-public class drawListener implements ActionListener{
+public class DrawListener implements ActionListener{
 
 	private Tortue T;
-	public drawListener(Tortue T){
+	public DrawListener(Tortue T){
 		this.T=T;
 	}
 	@Override

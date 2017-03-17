@@ -8,13 +8,13 @@ import javax.swing.JSlider;
 
 import turtle.Model.Tortue;
 
-public class turnListener implements ActionListener{
+public class TurnListener implements ActionListener{
 
 	private Tortue T;
 	private JSlider S;
 	private JComponent dessinMotif;
 	
-	public turnListener(Tortue T, JSlider S, JComponent dessinMotif){
+	public TurnListener(Tortue T, JSlider S, JComponent dessinMotif){
 		this.T = T;
 		this.S = S;
 		this.dessinMotif = dessinMotif;

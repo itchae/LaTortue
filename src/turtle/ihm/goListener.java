@@ -7,12 +7,12 @@ import javax.swing.JSlider;
 
 import turtle.Model.Tortue;
 
-public class goListener implements ActionListener{
+public class GoListener implements ActionListener{
 
 	private Tortue T;
 	private JSlider S;
 	
-	public goListener(Tortue T, JSlider S){
+	public GoListener(Tortue T, JSlider S){
 		this.T = T;
 		this.S = S;
 	}
