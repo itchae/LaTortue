@@ -24,7 +24,7 @@ public class Instructions extends JPanel{
 	private List<JSlider> sliders;
 	private JPanel panelCouleur;
 	
-	public Instructions (Tortue T, JComponent dessin, JComponent afficheurCouleur){
+	public Instructions (Tortue T, JComponent dessin, JComponent afficheurCouleur ,JComponent grille){
 		super(new BorderLayout());
 		Box mainBox = Box.createVerticalBox();
 		this.boutons = new ArrayList<JButton>();
@@ -36,14 +36,15 @@ public class Instructions extends JPanel{
 		sliders.add(boxTurn("Go"));
 		
 		this.boutons.get(0).addActionListener(new TurnListener(T, this.sliders.get(0),dessin));
-		this.boutons.get(1).addActionListener(new TurnListener(T, this.sliders.get(1),dessin));
+		this.boutons.get(1).addActionListener(new GoListener(T, this.sliders.get(1),grille));
 		
 		JPanel couleurs = new JPanel();
 		this.panelCouleur = couleurs;
-		couleurs.add(panelCoul(Color.GREEN, afficheurCouleur, T));
-		couleurs.add(panelCoul(Color.BLUE, afficheurCouleur, T));
-		couleurs.add(panelCoul(Color.RED, afficheurCouleur, T));
-		couleurs.add(panelCoul(Color.YELLOW, afficheurCouleur, T));
+		List<Color> listCouleurs = this.getAllColor();
+		for(Color c : listCouleurs){
+			couleurs.add(panelCoul(c, afficheurCouleur, T));
+		}
+		
 		
 		
 		
@@ -102,6 +103,24 @@ public class Instructions extends JPanel{
 	public void setPreferredSize(Dimension preferredSize) {
 		super.setPreferredSize(preferredSize);
 		this.panelCouleur.setPreferredSize(new Dimension((int) (preferredSize.width*0.8),preferredSize.height));
+	}
+	
+	private List<Color> getAllColor(){
+		List<Color> couleur = new ArrayList<Color>();
+		couleur.add(Color.BLACK);
+		couleur.add(Color.BLUE);
+		couleur.add(Color.CYAN);
+		couleur.add(Color.DARK_GRAY);
+		couleur.add(Color.GRAY);
+		couleur.add(Color.GREEN);
+		couleur.add(Color.LIGHT_GRAY);
+		couleur.add(Color.MAGENTA);
+		couleur.add(Color.ORANGE);
+		couleur.add(Color.PINK);
+		couleur.add(Color.RED);
+		couleur.add(Color.WHITE);
+		couleur.add(Color.YELLOW);
+		return couleur;
 	}
 
 

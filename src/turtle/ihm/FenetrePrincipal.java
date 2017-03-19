@@ -21,11 +21,12 @@ public class FenetrePrincipal extends JFrame {
 
 	public FenetrePrincipal(boolean debutant){
 		super();
-		this.textEtat = new LabelTempo(3000);
-		this.central = new EcranCentral(10,10);
+
 		this.tortue = new Tortue();
+		this.textEtat = new LabelTempo(3000);
+		this.central = new EcranCentral(10,10, this.tortue);
 		this.droite = new EcranDroite(this.tortue,this);
-		this.gauche = new EcranGauche(debutant,this.tortue , this.droite.getMotifActuel() , this.droite.getColorPanel());
+		this.gauche = new EcranGauche(debutant,this.tortue , this.droite.getMotifActuel() , this.droite.getColorPanel(),this.central);
 		
 		this.add(this.central);
 		this.add(this.droite,BorderLayout.EAST);

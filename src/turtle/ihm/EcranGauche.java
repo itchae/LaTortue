@@ -18,10 +18,10 @@ public class EcranGauche extends JPanel {
 	private JScrollPane scrollText;
 	private JComponent blocInstruction;
 	
-	public EcranGauche(boolean debutant , Tortue t ,JComponent dessinMotif , JComponent afficheurCoul){
+	public EcranGauche(boolean debutant , Tortue t ,JComponent dessinMotif , JComponent afficheurCoul,JComponent grille){
 		super(new BorderLayout());
 		this.textCommand = new TextInstruction();
-		this.createBlocInstruction(debutant, t, dessinMotif,afficheurCoul);
+		this.createBlocInstruction(debutant, t, dessinMotif,afficheurCoul,grille);
 		Box vBox = Box.createVerticalBox();
 		this.scrollText = new JScrollPane(this.textCommand);
 		vBox.add(this.scrollText);
@@ -30,12 +30,13 @@ public class EcranGauche extends JPanel {
 	}
 
 	
-	private void createBlocInstruction(boolean debutant , Tortue t ,JComponent dessinMotif, JComponent afficheurCoul){
+	private void createBlocInstruction(boolean debutant , Tortue t ,JComponent dessinMotif, JComponent afficheurCoul,JComponent grille){
 		if(debutant){
-			this.blocInstruction = new Instructions(t,dessinMotif,afficheurCoul);
+			this.blocInstruction = new Instructions(t,dessinMotif,afficheurCoul,grille);
+			this.textCommand.setEditable(false);
 		}
 		else{
-			this.blocInstruction = new Instructions(t,dessinMotif,afficheurCoul);
+			this.blocInstruction = new Instructions(t,dessinMotif,afficheurCoul,grille);
 		}
 	}
 
