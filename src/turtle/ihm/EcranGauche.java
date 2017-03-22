@@ -18,7 +18,7 @@ public class EcranGauche extends JPanel {
 	private JScrollPane scrollText;
 	private JComponent blocInstruction;
 	
-	public EcranGauche(boolean debutant , Tortue t ,JComponent dessinMotif , JComponent afficheurCoul,JComponent grille){
+	public EcranGauche(boolean debutant , Tortue t ,JComponent dessinMotif , JComponent afficheurCoul,EcranCentral grille){
 		super(new BorderLayout());
 		this.textCommand = new TextInstruction();
 		this.createBlocInstruction(debutant, t, dessinMotif,afficheurCoul,grille);
@@ -30,7 +30,7 @@ public class EcranGauche extends JPanel {
 	}
 
 	
-	private void createBlocInstruction(boolean debutant , Tortue t ,JComponent dessinMotif, JComponent afficheurCoul,JComponent grille){
+	private void createBlocInstruction(boolean debutant , Tortue t ,JComponent dessinMotif, JComponent afficheurCoul,EcranCentral grille){
 		if(debutant){
 			this.blocInstruction = new Instructions(t,dessinMotif,afficheurCoul,grille);
 			this.textCommand.setEditable(false);

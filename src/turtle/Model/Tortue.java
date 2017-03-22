@@ -2,6 +2,7 @@ package turtle.Model;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -47,8 +48,9 @@ public class Tortue {
 	public List<Vecteur> go() {
 		List<Vecteur> liste = new ArrayList<Vecteur>();
 		if(draw){
-			while (motif.getIteratorDeplacement().hasNext()){
-				Vecteur v = motif.getIteratorDeplacement().next();
+			Iterator<Vecteur> i = motif.getIteratorDeplacement();
+			while (i.hasNext()){
+				Vecteur v = i.next();
 				this.coordonnee = Vecteur.somme(this.coordonnee, v);
 				liste.add(this.coordonnee);
 			}

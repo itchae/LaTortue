@@ -24,7 +24,7 @@ public class Instructions extends JPanel{
 	private List<JSlider> sliders;
 	private JPanel panelCouleur;
 	
-	public Instructions (Tortue T, JComponent dessin, JComponent afficheurCouleur ,JComponent grille){
+	public Instructions (Tortue T, JComponent dessin, JComponent afficheurCouleur ,EcranCentral grille){
 		super(new BorderLayout());
 		Box mainBox = Box.createVerticalBox();
 		this.boutons = new ArrayList<JButton>();

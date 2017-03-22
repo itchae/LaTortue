@@ -13,7 +13,7 @@ public class FenetrePrincipal extends JFrame {
 	
 	private static final long serialVersionUID = -219028337465163564L;
 	private JLabel textEtat;
-	private JComponent central;
+	private EcranCentral central;
 	private EcranDroite droite;
 
 	private JComponent gauche;

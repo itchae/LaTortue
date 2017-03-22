@@ -12,9 +12,9 @@ public class GoListener implements ActionListener{
 
 	private Tortue T;
 	private JSlider S;
-	private JComponent grille;
+	private EcranCentral grille;
 	
-	public GoListener(Tortue T, JSlider S ,JComponent grille){
+	public GoListener(Tortue T, JSlider S ,EcranCentral grille){
 		this.T = T;
 		this.S = S;
 		this.grille = grille;
@@ -22,7 +22,7 @@ public class GoListener implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		T.go(S.getValue());
+		this.grille.addPoint(T.go(S.getValue()), T.getDraw(), T.getColor());
 		this.grille.repaint();
 	}
 	
