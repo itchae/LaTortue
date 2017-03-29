@@ -8,6 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 
 import turtle.Model.Tortue;
+import turtle.Model.UndoClass;
 
 public class FenetrePrincipal extends JFrame {
 	
@@ -18,15 +19,17 @@ public class FenetrePrincipal extends JFrame {
 
 	private JComponent gauche;
 	private Tortue tortue;
+	private UndoClass undo;
 
-	public FenetrePrincipal(boolean debutant){
+	public FenetrePrincipal(boolean debutant , int xMaxGrid ,int yMaxGrid){
 		super();
 
 		this.tortue = new Tortue();
+		this.undo = new UndoClass(this.tortue);
 		this.textEtat = new LabelTempo(3000);
-		this.central = new EcranCentral(10,10, this.tortue);
+		this.central = new EcranCentral(xMaxGrid,yMaxGrid, this.undo);
 		this.droite = new EcranDroite(this.tortue,this);
-		this.gauche = new EcranGauche(debutant,this.tortue , this.droite.getMotifActuel() , this.droite.getColorPanel(),this.central);
+		this.gauche = new EcranGauche(debutant,this.undo , this.droite.getMotifActuel() , this.droite.getColorPanel(),this.central);
 		
 		this.add(this.central);
 		this.add(this.droite,BorderLayout.EAST);
@@ -45,7 +48,7 @@ public class FenetrePrincipal extends JFrame {
 			
 			@Override
 			public void run() {
-				JFrame f = new FenetrePrincipal(true);
+				JFrame f = new FenetrePrincipal(true,10,10);
 				f.pack();
 				f.setVisible(true);
 				

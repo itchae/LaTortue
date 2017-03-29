@@ -16,6 +16,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JSlider;
 
 import turtle.Model.Tortue;
+import turtle.Model.UndoClass;
 
 public class Instructions extends JPanel{
 
@@ -24,7 +25,7 @@ public class Instructions extends JPanel{
 	private List<JSlider> sliders;
 	private JPanel panelCouleur;
 	
-	public Instructions (Tortue T, JComponent dessin, JComponent afficheurCouleur ,EcranCentral grille){
+	public Instructions (UndoClass T, JComponent dessin, JComponent afficheurCouleur ,EcranCentral grille){
 		super(new BorderLayout());
 		Box mainBox = Box.createVerticalBox();
 		this.boutons = new ArrayList<JButton>();
@@ -91,7 +92,7 @@ public class Instructions extends JPanel{
 		return fois;
 	}
 
-	public static JPanel panelCoul(Color color, JComponent afficheur, Tortue T){
+	public static JPanel panelCoul(Color color, JComponent afficheur, UndoClass T){
 		JPanel coulPane = new JPanel();
 		coulPane.setBackground(color);
 		coulPane.setPreferredSize(new Dimension(30,30));

@@ -5,14 +5,14 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JComponent;
 
-import turtle.Model.Tortue;
+import turtle.Model.UndoClass;
 
 public class ColorListener extends MouseAdapter {
 
-	private Tortue T;
+	private UndoClass T;
 	private JComponent afficheur;
 	
-	public ColorListener (Tortue tortue, JComponent afficheur){
+	public ColorListener (UndoClass tortue, JComponent afficheur){
 		this.T = tortue;
 		this.afficheur=afficheur;
 	}
@@ -28,7 +28,7 @@ public class ColorListener extends MouseAdapter {
 		if(o instanceof JComponent){	
 			JComponent couleurSel = (JComponent)o;
 			afficheur.setBackground(couleurSel.getBackground());
-			T.setColor(couleurSel.getBackground());
+			T.addColorCommand(couleurSel.getBackground());
 		}
 		else{
 			System.err.println("Un listener MotifClicListener n'est pas associé à un DessinMotif");

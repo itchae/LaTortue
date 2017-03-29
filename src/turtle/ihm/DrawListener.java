@@ -5,12 +5,12 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JCheckBox;
 
-import turtle.Model.Tortue;
+import turtle.Model.UndoClass;
 
 public class DrawListener implements ActionListener{
 
-	private Tortue T;
-	public DrawListener(Tortue T){
+	private UndoClass T;
+	public DrawListener(UndoClass T){
 		this.T=T;
 	}
 	@Override
@@ -18,7 +18,7 @@ public class DrawListener implements ActionListener{
 		Object o = e.getSource();
 		if(o instanceof JCheckBox){	
 			JCheckBox checkDraw = (JCheckBox)o;
-			T.setDraw(checkDraw.isSelected());
+			T.addDrawCommand(checkDraw.isSelected());
 		}
 		else{
 			System.err.println("Problème drawListener");

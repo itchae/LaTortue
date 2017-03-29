@@ -72,6 +72,12 @@ public class Tortue {
 		}
 		return liste;
 	}
+	
+	public void ungo(int k){
+		Vecteur retour = this.motif.getVectMouvement();
+		retour = new Vecteur(-k*retour.getX(),-k*retour.getY());
+		this.coordonnee = Vecteur.somme(this.coordonnee, retour);
+	}
 
 	
 	/**

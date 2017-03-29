@@ -36,6 +36,11 @@ public class Motif {
 	public void turn() {
 		this.dirActuel = (this.dirActuel+1)%this.listDir.size();		
 	}
+	
+	public void unturn(int k) {
+		k = k%this.listDir.size();
+		this.dirActuel = (this.dirActuel+(this.listDir.size()-k))%this.listDir.size();		
+	}
 
 
 	@Override
