@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JComponent;
 import javax.swing.JSlider;
 
+import turtle.Model.OutOfGridException;
 import turtle.Model.Tortue;
 
 public class GoListener implements ActionListener{
@@ -22,8 +23,12 @@ public class GoListener implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		this.grille.addPoint(T.go(S.getValue()), T.getDraw(), T.getColor());
-		this.grille.repaint();
+		try{
+			this.grille.addPoint(T.go(S.getValue()), T.getDraw(), T.getColor());
+			this.grille.repaint();
+		}catch(OutOfGridException ex){	
+			System.err.println("Erreur grille dépacement");
+		}
 	}
 	
 }

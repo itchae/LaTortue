@@ -22,7 +22,7 @@ public class FenetrePrincipal extends JFrame {
 	public FenetrePrincipal(boolean debutant){
 		super();
 
-		this.tortue = new Tortue();
+		this.tortue = new Tortue(10, 10);
 		this.textEtat = new LabelTempo(3000);
 		this.central = new EcranCentral(10,10, this.tortue);
 		this.droite = new EcranDroite(this.tortue,this);
