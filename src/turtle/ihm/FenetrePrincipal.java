@@ -24,7 +24,8 @@ public class FenetrePrincipal extends JFrame {
 	public FenetrePrincipal(boolean debutant , int xMaxGrid ,int yMaxGrid){
 		super();
 
-		this.tortue = new Tortue();
+
+		this.tortue = new Tortue(xMaxGrid, yMaxGrid);
 		this.undo = new UndoClass(this.tortue);
 		this.textEtat = new LabelTempo(3000);
 		this.central = new EcranCentral(xMaxGrid,yMaxGrid, this.undo);

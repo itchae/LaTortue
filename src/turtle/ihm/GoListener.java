@@ -7,6 +7,9 @@ import javax.swing.JSlider;
 
 import turtle.Model.UndoClass;
 
+import turtle.Model.OutOfGridException;
+
+
 public class GoListener implements ActionListener{
 
 	private UndoClass T;
@@ -23,6 +26,7 @@ public class GoListener implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if(T.addGoCommand(S.getValue())){
 			this.grille.repaint();
+
 		}
 	}
 	

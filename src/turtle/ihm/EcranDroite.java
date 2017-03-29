@@ -95,7 +95,7 @@ public class EcranDroite extends JPanel {
 			public void run() {
 				JFrame f = new JFrame();
 				f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-				f.add(new EcranDroite(new Tortue(),f));
+				f.add(new EcranDroite(new Tortue(10, 10),f));
 				f.pack();
 				f.setVisible(true);
 				
