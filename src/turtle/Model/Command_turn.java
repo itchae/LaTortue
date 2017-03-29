@@ -29,6 +29,14 @@ public class Command_turn extends Command {
 		this.getTortue().getMotif().unturn(this.getNb());
 		
 	}
+
+	@Override
+	public String toString() {
+		String txt = "Turn "+this.nb + "\n";
+		return txt;
+	}
+	
+	
 	
 	
 

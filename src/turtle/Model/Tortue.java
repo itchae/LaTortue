@@ -47,7 +47,7 @@ public class Tortue {
 	}
 
 	public void goException(int xdep, int ydep) throws OutOfGridException{
-		if(xdep>this.xmax && ydep>this.ymax){
+		if(xdep> this.xmax || ydep >this.ymax || xdep<0 || ydep<0){
 			throw new OutOfGridException();
 		}
 	}
@@ -66,7 +66,7 @@ public class Tortue {
 				Vecteur v = i.next();
 				tmp = Vecteur.somme(tmp, v);
 				goException(tmp.getX(), tmp.getY());
-				liste.add(this.coordonnee);
+				liste.add(tmp);
 			}
 			this.coordonnee = tmp;
 		}else{

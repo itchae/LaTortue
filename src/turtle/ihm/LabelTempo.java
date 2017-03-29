@@ -34,6 +34,11 @@ public class LabelTempo extends JLabel  {
 	public LabelTempo(int time){
 		this("",time);
 	}
+	
+	public void showText(String txt){
+		this.setText(txt);
+		this.affiche();
+	}
 
 
 		public static void main(String[] args) {

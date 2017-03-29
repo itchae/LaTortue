@@ -151,6 +151,16 @@ public class UndoClass {
 	public Tortue getTortue() {
 		return this.tortue;
 	}
+
+	@Override
+	public String toString() {
+		String txt = "";
+		for(int i = 0 ; i< this.listCommand.size() ; i++){
+			txt+= this.listCommand.get(i).toString();
+		}
+		return txt;
+	}
+	
 	
 	
 	

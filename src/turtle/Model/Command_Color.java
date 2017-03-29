@@ -29,6 +29,12 @@ public class Command_Color extends Command {
 		
 	}
 	
+	@Override
+	public String toString() {
+		String txt = "Color "+this.color.getRed()+" "+this.color.getGreen()+" "+this.color.getBlue() + "\n";
+		return txt;
+	}
+	
 	
 
 }

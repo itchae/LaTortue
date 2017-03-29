@@ -18,10 +18,10 @@ public class EcranGauche extends JPanel {
 	private JScrollPane scrollText;
 	private JComponent blocInstruction;
 	
-	public EcranGauche(boolean debutant , UndoClass t ,JComponent dessinMotif , JComponent afficheurCoul,EcranCentral grille){
+	public EcranGauche(boolean debutant , UndoClass t ,JComponent dessinMotif , JComponent afficheurCoul,EcranCentral grille,LabelTempo error ){
 		super(new BorderLayout());
 		this.textCommand = new TextInstruction();
-		this.createBlocInstruction(debutant, t, dessinMotif,afficheurCoul,grille);
+		this.createBlocInstruction(debutant, t, dessinMotif,afficheurCoul,grille,error);
 		Box vBox = Box.createVerticalBox();
 		this.scrollText = new JScrollPane(this.textCommand);
 		vBox.add(this.scrollText);
@@ -30,13 +30,13 @@ public class EcranGauche extends JPanel {
 	}
 
 	
-	private void createBlocInstruction(boolean debutant , UndoClass t ,JComponent dessinMotif, JComponent afficheurCoul,EcranCentral grille){
+	private void createBlocInstruction(boolean debutant , UndoClass t ,JComponent dessinMotif, JComponent afficheurCoul,EcranCentral grille,LabelTempo error){
 		if(debutant){
-			this.blocInstruction = new Instructions(t,dessinMotif,afficheurCoul,grille);
+			this.blocInstruction = new Instructions(t,dessinMotif,afficheurCoul,grille,this.textCommand,error);
 			this.textCommand.setEditable(false);
 		}
 		else{
-			this.blocInstruction = new Instructions(t,dessinMotif,afficheurCoul,grille);
+			this.blocInstruction = new Instructions(t,dessinMotif,afficheurCoul,grille,this.textCommand,error);
 		}
 	}
 

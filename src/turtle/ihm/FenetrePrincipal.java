@@ -13,7 +13,7 @@ import turtle.Model.UndoClass;
 public class FenetrePrincipal extends JFrame {
 	
 	private static final long serialVersionUID = -219028337465163564L;
-	private JLabel textEtat;
+	private LabelTempo textEtat;
 	private EcranCentral central;
 	private EcranDroite droite;
 
@@ -30,12 +30,13 @@ public class FenetrePrincipal extends JFrame {
 		this.textEtat = new LabelTempo(3000);
 		this.central = new EcranCentral(xMaxGrid,yMaxGrid, this.undo);
 		this.droite = new EcranDroite(this.tortue,this);
-		this.gauche = new EcranGauche(debutant,this.undo , this.droite.getMotifActuel() , this.droite.getColorPanel(),this.central);
+		this.gauche = new EcranGauche(debutant,this.undo , this.droite.getMotifActuel() , this.droite.getColorPanel(),this.central,this.textEtat);
 		
 		this.add(this.central);
 		this.add(this.droite,BorderLayout.EAST);
 		this.add(this.textEtat , BorderLayout.SOUTH);
 		this.add(this.gauche,BorderLayout.WEST);
+		this.textEtat.setHorizontalAlignment(JLabel.CENTER);
 
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.addComponentListener(new ResizeWindow(this.droite,this.central,this.gauche));

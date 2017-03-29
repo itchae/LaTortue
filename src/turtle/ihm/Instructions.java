@@ -14,8 +14,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSlider;
+import javax.swing.JTextArea;
 
-import turtle.Model.Tortue;
 import turtle.Model.UndoClass;
 
 public class Instructions extends JPanel{
@@ -25,7 +25,7 @@ public class Instructions extends JPanel{
 	private List<JSlider> sliders;
 	private JPanel panelCouleur;
 	
-	public Instructions (UndoClass T, JComponent dessin, JComponent afficheurCouleur ,EcranCentral grille){
+	public Instructions (UndoClass T, JComponent dessin, JComponent afficheurCouleur ,EcranCentral grille ,JTextArea textCommand ,LabelTempo error){
 		super(new BorderLayout());
 		Box mainBox = Box.createVerticalBox();
 		this.boutons = new ArrayList<JButton>();
@@ -36,14 +36,14 @@ public class Instructions extends JPanel{
 		sliders.add(Box.createRigidArea(new Dimension(0,5)));
 		sliders.add(boxTurn("Go"));
 		
-		this.boutons.get(0).addActionListener(new TurnListener(T, this.sliders.get(0),dessin));
-		this.boutons.get(1).addActionListener(new GoListener(T, this.sliders.get(1),grille));
+		this.boutons.get(0).addActionListener(new TurnListener(T, this.sliders.get(0),dessin,textCommand,error));
+		this.boutons.get(1).addActionListener(new GoListener(T, this.sliders.get(1),grille,textCommand,error));
 		
 		JPanel couleurs = new JPanel();
 		this.panelCouleur = couleurs;
 		List<Color> listCouleurs = this.getAllColor();
 		for(Color c : listCouleurs){
-			couleurs.add(panelCoul(c, afficheurCouleur, T));
+			couleurs.add(panelCoul(c, afficheurCouleur, T,textCommand));
 		}
 		
 		
@@ -51,7 +51,7 @@ public class Instructions extends JPanel{
 		
 		Box drawBox = Box.createHorizontalBox();
 		JCheckBox draw = new JCheckBox();
-		draw.addActionListener(new DrawListener(T));
+		draw.addActionListener(new DrawListener(T,textCommand));
 		
 		JLabel drawText = new JLabel("Draw");
 		drawBox.add(draw);
@@ -92,11 +92,11 @@ public class Instructions extends JPanel{
 		return fois;
 	}
 
-	public static JPanel panelCoul(Color color, JComponent afficheur, UndoClass T){
+	public static JPanel panelCoul(Color color, JComponent afficheur, UndoClass T , JTextArea textCommand){
 		JPanel coulPane = new JPanel();
 		coulPane.setBackground(color);
 		coulPane.setPreferredSize(new Dimension(30,30));
-		coulPane.addMouseListener(new ColorListener(T, afficheur));
+		coulPane.addMouseListener(new ColorListener(T, afficheur , textCommand));
 		return coulPane;		
 	}
 

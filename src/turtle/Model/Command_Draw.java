@@ -27,5 +27,11 @@ public class Command_Draw extends Command {
 		this.getTortue().setDraw(this.oldState);
 		
 	}	
+	
+	@Override
+	public String toString() {
+		String txt = "Draw "+this.isEnable() + "\n";
+		return txt;
+	}
 
 }

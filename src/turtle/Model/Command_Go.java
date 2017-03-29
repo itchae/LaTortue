@@ -57,6 +57,12 @@ public class Command_Go extends Command {
 		return this.drawColor;
 	}
 	
+	@Override
+	public String toString() {
+		String txt = "Go "+this.nb + "\n";
+		return txt;
+	}
+	
 	
 
 }
