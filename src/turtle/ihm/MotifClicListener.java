@@ -3,14 +3,18 @@ package turtle.ihm;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import turtle.Model.Tortue;
+import javax.swing.JTextArea;
+
+import turtle.Model.UndoClass;
 
 public class MotifClicListener extends MouseAdapter {
 	
-	private Tortue tortue ;
+	private UndoClass undo ;
+	private JTextArea textCommand;
 	
-	public MotifClicListener(Tortue tortue){
-		this.tortue = tortue;
+	public MotifClicListener(UndoClass undo ){
+		this.undo = undo;
+		this.textCommand = null;
 	}
 
 	@Override
@@ -18,13 +22,25 @@ public class MotifClicListener extends MouseAdapter {
 		Object o = e.getSource();
 		if(o instanceof DessinMotif){
 			DessinMotif motif = (DessinMotif)o;
-			tortue.setMotif(motif.getMotif());
+			this.undo.addMotifCommand(motif.getMotif());
+			try{
+				this.textCommand.setText(""+this.undo);
+			}
+			catch(NullPointerException excep){
+				
+			}
 		}
 		else{
 			System.err.println("Un listener MotifClicListener n'est pas associé à un DessinMotif");
 		}
 		
 	}
+
+	public void setTextCommand(JTextArea textCommand) {
+		this.textCommand = textCommand;
+	}
+	
+	
 
 	
 

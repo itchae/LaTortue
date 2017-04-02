@@ -8,14 +8,15 @@ import java.util.List;
 
 import javax.swing.Box;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.SwingUtilities;
+import javax.swing.JTextArea;
 
 import turtle.Model.Motif;
-import turtle.Model.Tortue;
+import turtle.Model.UndoClass;
 
 public class EcranDroite extends JPanel {
 	
@@ -25,16 +26,18 @@ public class EcranDroite extends JPanel {
 	private JPanel couleurActuel;
 	private List<JButton> buttons; 
 	private JScrollPane scroll;
+	private UndoClass undo;
 
-	public EcranDroite(Tortue tortue , JFrame fenetre){
+	public EcranDroite(UndoClass undo , JFrame fenetre ){
 		super(new BorderLayout());
+		this.undo = undo;
 		List<Motif> listMotif = Motif.getDefaultMotif();
-		tortue.setMotif(listMotif.get(0));
-		this.motifActuel = new DessinMotif(tortue.getMotif());
-		this.selecteur = new SelecteurMotif(listMotif,tortue , this.motifActuel);
+		undo.getTortue().setMotif(listMotif.get(0));
+		this.motifActuel = new DessinMotif(undo.getTortue().getMotif());
+		this.selecteur = new SelecteurMotif(listMotif,undo , this.motifActuel);
 		this.couleurActuel = new JPanel();
 		this.couleurActuel.setPreferredSize(this.motifActuel.getPreferredSize());
-		this.couleurActuel.setBackground(DessinMotif.color);
+		this.couleurActuel.setBackground(undo.getTortue().getColor());
 		this.buttons = new ArrayList<JButton>();
 		this.buttons.add(new JButton("Init"));
 		this.buttons.add(new JButton("Undo"));
@@ -76,7 +79,20 @@ public class EcranDroite extends JPanel {
 	}
 	
 	
-
+	public void createUndoListener(JComponent grille , JTextArea text , JComponent motifActuel , JComponent couleur,JCheckBox drawBox){
+		if(this.buttons.get(1).getActionListeners().length ==0){
+			this.buttons.get(1).addActionListener(new UndoListener(undo,grille,text,motifActuel,couleur,drawBox));
+			this.setTextCommandRefresh(text);
+		}
+		else{
+			System.err.println("Le bouton undo a déjà un action listener");
+		}
+		
+	}
+	
+	private void setTextCommandRefresh(JTextArea text){
+		this.selecteur.addTextCommandRefresh(text);
+	}
 
 	@Override
 	public void setPreferredSize(Dimension preferredSize) {
@@ -87,19 +103,4 @@ public class EcranDroite extends JPanel {
 	}
 
 
-	public static void main(String[] args){
-		
-		SwingUtilities.invokeLater(new Runnable(){
-			
-			@Override
-			public void run() {
-				JFrame f = new JFrame();
-				f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-				f.add(new EcranDroite(new Tortue(10, 10),f));
-				f.pack();
-				f.setVisible(true);
-				
-			}
-		});
-	}
 }

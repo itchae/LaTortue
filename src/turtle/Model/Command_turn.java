@@ -27,7 +27,6 @@ public class Command_turn extends Command {
 	@Override
 	public void undoAction() {
 		this.getTortue().getMotif().unturn(this.getNb());
-		
 	}
 
 	@Override

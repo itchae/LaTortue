@@ -2,7 +2,6 @@ package turtle.ihm;
 
 import java.awt.BorderLayout;
 
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
@@ -17,7 +16,7 @@ public class FenetrePrincipal extends JFrame {
 	private EcranCentral central;
 	private EcranDroite droite;
 
-	private JComponent gauche;
+	private EcranGauche gauche;
 	private Tortue tortue;
 	private UndoClass undo;
 
@@ -29,8 +28,9 @@ public class FenetrePrincipal extends JFrame {
 		this.undo = new UndoClass(this.tortue);
 		this.textEtat = new LabelTempo(3000);
 		this.central = new EcranCentral(xMaxGrid,yMaxGrid, this.undo);
-		this.droite = new EcranDroite(this.tortue,this);
+		this.droite = new EcranDroite(this.undo,this);
 		this.gauche = new EcranGauche(debutant,this.undo , this.droite.getMotifActuel() , this.droite.getColorPanel(),this.central,this.textEtat);
+		this.droite.createUndoListener(this.central, this.gauche.getTextCommand(),this.droite.getMotifActuel(),this.droite.getColorPanel(),this.gauche.getDrawBox());
 		
 		this.add(this.central);
 		this.add(this.droite,BorderLayout.EAST);

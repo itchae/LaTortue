@@ -1,21 +1,20 @@
 package turtle.ihm;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.Box;
 import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingUtilities;
-import javax.swing.border.LineBorder;
 
 public class Config extends JFrame{
 
+
+	private static final long serialVersionUID = -2308639649954891679L;
 	private JButton valid = new JButton("Valider");
 	private JButton debutant = new JButton("Debutant");
 	private JButton expert = new JButton("Expert");

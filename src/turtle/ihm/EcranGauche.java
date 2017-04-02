@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 
 import javax.swing.Box;
+import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -48,6 +49,19 @@ public class EcranGauche extends JPanel {
 		this.scrollText.setPreferredSize(new Dimension(preferredSize.width,(int) (preferredSize.height*0.6)));
 		this.blocInstruction.setPreferredSize(new Dimension(preferredSize.width,(int) (preferredSize.height*0.4)));
 	}
+
+
+	public JTextArea getTextCommand() {
+		return this.textCommand;
+	}
+
+	public JCheckBox getDrawBox(){
+		if(this.blocInstruction instanceof Instructions){
+			return ((Instructions)(this.blocInstruction)).getDraw();
+		}
+		return null;
+	}
+
 
 
 

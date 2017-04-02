@@ -24,6 +24,7 @@ public class Instructions extends JPanel{
 	private List<JButton> boutons; 
 	private List<JSlider> sliders;
 	private JPanel panelCouleur;
+	private JCheckBox draw;
 	
 	public Instructions (UndoClass T, JComponent dessin, JComponent afficheurCouleur ,EcranCentral grille ,JTextArea textCommand ,LabelTempo error){
 		super(new BorderLayout());
@@ -43,14 +44,14 @@ public class Instructions extends JPanel{
 		this.panelCouleur = couleurs;
 		List<Color> listCouleurs = this.getAllColor();
 		for(Color c : listCouleurs){
-			couleurs.add(panelCoul(c, afficheurCouleur, T,textCommand));
+			couleurs.add(panelCoul(c, afficheurCouleur, T,textCommand , grille));
 		}
 		
 		
 		
 		
 		Box drawBox = Box.createHorizontalBox();
-		JCheckBox draw = new JCheckBox();
+		this.draw = new JCheckBox();
 		draw.addActionListener(new DrawListener(T,textCommand));
 		
 		JLabel drawText = new JLabel("Draw");
@@ -79,8 +80,8 @@ public class Instructions extends JPanel{
 		
 		JSlider slide = new JSlider(); //0 à 8 
 		slide.setMaximum(8);
-		slide.setMinimum(0);
-		slide.setValue(0);
+		slide.setMinimum(1);
+		slide.setValue(1);
 		this.sliders.add(slide);
 		
 		JLabel nbSlide = new JLabel(" " + slide.getValue());
@@ -92,11 +93,11 @@ public class Instructions extends JPanel{
 		return fois;
 	}
 
-	public static JPanel panelCoul(Color color, JComponent afficheur, UndoClass T , JTextArea textCommand){
+	public static JPanel panelCoul(Color color, JComponent afficheur, UndoClass T , JTextArea textCommand , JComponent grille){
 		JPanel coulPane = new JPanel();
 		coulPane.setBackground(color);
 		coulPane.setPreferredSize(new Dimension(30,30));
-		coulPane.addMouseListener(new ColorListener(T, afficheur , textCommand));
+		coulPane.addMouseListener(new ColorListener(T, afficheur , textCommand , grille));
 		return coulPane;		
 	}
 
@@ -122,6 +123,10 @@ public class Instructions extends JPanel{
 		couleur.add(Color.WHITE);
 		couleur.add(Color.YELLOW);
 		return couleur;
+	}
+
+	public JCheckBox getDraw() {
+		return this.draw;
 	}
 
 

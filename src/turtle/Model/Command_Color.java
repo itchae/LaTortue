@@ -26,7 +26,6 @@ public class Command_Color extends Command {
 	@Override
 	public void undoAction() {
 		this.getTortue().setColor(this.oldColor);
-		
 	}
 	
 	@Override

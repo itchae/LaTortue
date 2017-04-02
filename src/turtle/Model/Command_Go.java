@@ -42,7 +42,6 @@ public class Command_Go extends Command {
 	@Override
 	public void undoAction() {
 		this.getTortue().ungo(this.getNb());
-		
 	}
 	
 	public List<Vecteur> getRoute(){

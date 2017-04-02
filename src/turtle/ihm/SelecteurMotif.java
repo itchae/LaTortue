@@ -3,17 +3,20 @@ package turtle.ihm;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
+
 import turtle.Model.Motif;
-import turtle.Model.Tortue;
+import turtle.Model.UndoClass;
 
 public class SelecteurMotif extends JPanel {
 
 	private static final long serialVersionUID = 8883297560974887620L;
 	private List<DessinMotif> motifs;
+	private MotifClicListener motifListener;
 	
-	public SelecteurMotif(List<Motif> listMotif , Tortue tortue ,DessinMotif dessinActuel){
+	public SelecteurMotif(List<Motif> listMotif ,UndoClass undo ,DessinMotif dessinActuel){
 		this.motifs = new ArrayList<DessinMotif>();
-		MotifClicListener motifListener = new MotifClicListener(tortue);
+		this.motifListener = new MotifClicListener(undo);
 		UpdateSelectedMotifListener updateDessin = new UpdateSelectedMotifListener(dessinActuel);
 		
 		for(Motif m : listMotif){
@@ -23,6 +26,10 @@ public class SelecteurMotif extends JPanel {
 			dessin.addMouseListener(motifListener);
 			dessin.addMouseListener(updateDessin);
 		}
+	}
+	
+	public void addTextCommandRefresh(JTextArea text){
+		this.motifListener.setTextCommand(text);
 	}
 
 }

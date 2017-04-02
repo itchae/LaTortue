@@ -61,11 +61,14 @@ public class UndoClass {
 	}
 	
 	public void undo(){
-		int pos = this.pileInsertion.get(0).intValue();
-		this.pileInsertion.remove(0);
-		this.annuleCommand(pos);
-		this.listCommand.remove(pos);
-		this.refaireCommand(pos);
+		if(!this.pileInsertion.isEmpty()){
+			int pos = this.pileInsertion.get(0).intValue();
+			this.pileInsertion.remove(0);
+			this.annuleCommand(pos);
+			this.listCommand.remove(pos);
+			this.refaireCommand(pos);
+		}
+		
 	}
 
 	public void addDrawCommand(boolean enable){
@@ -103,6 +106,25 @@ public class UndoClass {
 	public boolean addTurnCommand(int k , int posInsertion){
 		this.annuleCommand(posInsertion);
 		Command c = new Command_turn(this.tortue,k);
+		c.doAction();
+		if(!this.refaireCommand(posInsertion)){
+			c.undoAction();
+			this.refaireCommand(posInsertion);
+			return false;
+		}
+		
+		this.listCommand.add(posInsertion,c);
+		this.pileInsertion.add(0 ,new Integer(posInsertion));
+		return true;
+	}
+	
+	public boolean addMotifCommand(Motif k){
+		 return this.addMotifCommand(k,this.listCommand.size());
+	}
+	
+	public boolean addMotifCommand(Motif k , int posInsertion){
+		this.annuleCommand(posInsertion);
+		Command c = new Command_Motif(this.tortue,k);
 		c.doAction();
 		if(!this.refaireCommand(posInsertion)){
 			c.undoAction();

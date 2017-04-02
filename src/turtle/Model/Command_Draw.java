@@ -25,7 +25,6 @@ public class Command_Draw extends Command {
 	@Override
 	public void undoAction() {
 		this.getTortue().setDraw(this.oldState);
-		
 	}	
 	
 	@Override
