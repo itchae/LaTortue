@@ -70,6 +70,12 @@ public class UndoClass {
 		}
 		
 	}
+	
+	public void clear(){
+		while(!this.pileInsertion.isEmpty()){
+			this.undo();
+		}
+	}
 
 	public void addDrawCommand(boolean enable){
 		this.addDrawCommand(enable,this.listCommand.size());

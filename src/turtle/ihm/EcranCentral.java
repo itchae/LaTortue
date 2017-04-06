@@ -14,10 +14,12 @@ public class EcranCentral extends Grille {
 	private static final long serialVersionUID = 2920717238864944340L;
 	private UndoClass t ;
 	private Vecteur origine;
+	private int arretNbPointAvant;
 
 	public EcranCentral(int colonne, int ligne , UndoClass t) {
 		super(colonne, ligne);
 		this.t = t;
+		this.arretNbPointAvant = 0;
 		this.origine = t.getTortue().getCoordonnee();
 	}
 
@@ -26,16 +28,23 @@ public class EcranCentral extends Grille {
 		Graphics2D g = (Graphics2D) graphics.create();
 		super.paintComponent(g);
 		this.drawChemin(g);
-		Vecteur posTortue = this.t.getTortue().getCoordonnee();
+	}
+	
+	private void dessinTortue(Graphics gra , Vecteur pos ,Color coul){
+		Graphics2D g = (Graphics2D)gra.create();
+		Vecteur posTortue =  pos;
+		if(this.arretNbPointAvant == 0){
+			this.t.getTortue().getCoordonnee();
+			coul = this.t.getTortue().getColor();
+		}
 		int colonneTaille = this.getTailleColonne();
 		 int ligneTaille = this.getTailleLigne();
 		 //on concidere le 0,0 en bas a gauche
 		 
-		g.setColor(this.t.getTortue().getColor());
+		g.setColor(coul);
 		g.fillOval((int)((posTortue.getX()-0.5)*colonneTaille),(int) ((this.getNbligne()-(posTortue.getY()+0.5))*ligneTaille), colonneTaille, ligneTaille);
 		
 	}
-	
 	private void drawChemin(Graphics gra){
 		Vecteur position = this.origine;
 		Graphics2D g = (Graphics2D)gra.create();
@@ -45,7 +54,7 @@ public class EcranCentral extends Grille {
 		List<Boolean> draw = this.t.getDrawPoints();
 		List<Color> color = this.t.getColorPoints();
 		
-		for (int i=0 ; i<points.size() ; i++){
+		for (int i=0 ; i<points.size() - this.arretNbPointAvant ; i++){
 			if(draw.get(i).booleanValue()){
 				g.setColor(color.get(i));
 				for(Vecteur v : points.get(i)){
@@ -57,6 +66,14 @@ public class EcranCentral extends Grille {
 				position = points.get(i).get(points.get(i).size()-1);
 			}
 		}
+		Color coulTortue;
+		try{
+			coulTortue = color.get(points.size() - this.arretNbPointAvant );
+		}
+		catch(Exception e){
+			coulTortue = this.t.getTortue().getColor();
+		}
+		this.dessinTortue(g,position,coulTortue);
 	}
 	
 	private void drawLine(Vecteur origine ,Vecteur fin , Graphics2D g){
@@ -69,8 +86,18 @@ public class EcranCentral extends Grille {
 		 int yFin = (this.getNbligne()-fin.getY())*ligneTaille;
 		 g.drawLine(xDeb, yDeb, xFin, yFin);
 	}
-	
 
+	public void setArretNbPointAvant(int arretNbPointAvant) {
+		if(arretNbPointAvant >=0){
+			this.arretNbPointAvant = arretNbPointAvant;
+		}
+		else{
+			this.arretNbPointAvant = 0;
+		}
+		
+	}
+	
+	
 	
 	
 

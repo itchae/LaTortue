@@ -80,8 +80,10 @@ public class EcranDroite extends JPanel {
 	
 	
 	public void createUndoListener(JComponent grille , JTextArea text , JComponent motifActuel , JComponent couleur,JCheckBox drawBox){
-		if(this.buttons.get(1).getActionListeners().length ==0){
+		if(this.buttons.get(1).getActionListeners().length == 0){
 			this.buttons.get(1).addActionListener(new UndoListener(undo,grille,text,motifActuel,couleur,drawBox));
+			this.buttons.get(0).addActionListener(new InitListener(undo,grille,text,motifActuel,couleur,drawBox));
+			this.buttons.get(2).addActionListener(new RepeatListener(grille,undo));
 			this.setTextCommandRefresh(text);
 		}
 		else{
