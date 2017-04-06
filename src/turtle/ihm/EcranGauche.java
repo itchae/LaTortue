@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 
 import javax.swing.Box;
+import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -37,7 +38,9 @@ public class EcranGauche extends JPanel {
 			this.textCommand.setEditable(false);
 		}
 		else{
-			this.blocInstruction = new Instructions(t,dessinMotif,afficheurCoul,grille,this.textCommand,error);
+			JButton button = new JButton ("Valider");
+			button.addActionListener(new LecteurListener(this.textCommand,t,error));
+			this.blocInstruction = button;
 		}
 	}
 
