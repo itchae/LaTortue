@@ -1,6 +1,7 @@
 package turtle.ihm;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import javax.swing.JComponent;
 import javax.swing.border.LineBorder;
@@ -55,6 +56,8 @@ abstract class Grille extends JComponent {
 			int y = ymax/nbligne*j;
 			gra.drawLine(0, y, xmax, y);
 		}
+		//force la grille à avoir la taille correcte
+		this.setSize(new Dimension(this.getNbcolonne()*this.getTailleColonne() , this.getNbligne()*this.getTailleLigne()));
 	}
 
 
