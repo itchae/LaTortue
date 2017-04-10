@@ -51,7 +51,7 @@ public class FenetrePrincipal extends JFrame {
 			@Override
 			public void run() {
 				//JFrame f = new FenetrePrincipal(true,10,10);
-				JFrame f = new FenetrePrincipal(false,10,10);
+				JFrame f = new FenetrePrincipal(true,10,10);
 				f.pack();
 				f.setVisible(true);
 				

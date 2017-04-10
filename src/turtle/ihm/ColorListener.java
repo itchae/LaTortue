@@ -21,10 +21,6 @@ public class ColorListener extends MouseAdapter {
 		this.textCommand = textCommand;
 		this.grille = grille;
 	}
-
-	
-	
-	
 	
 	
 	@Override

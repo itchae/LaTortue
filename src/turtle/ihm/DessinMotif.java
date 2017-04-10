@@ -39,8 +39,8 @@ public class DessinMotif extends Grille {
 	
 	private void calculTailleGrille(){
 		Rectangle rectMinimal = motif.getVectDiagonalRect();
-		this.setNbligne(rectMinimal.height+ 2);
-		this.setNbcolonne(rectMinimal.width+ 2);
+		this.setNbligne(rectMinimal.height + 2);
+		this.setNbcolonne(rectMinimal.width + 2);
 		if(this.getNbcolonne() %2 != 0) this.setNbcolonne(this.getNbcolonne()+1);
 		if(this.getNbligne() %2 != 0) this.setNbligne(this.getNbligne()+1);
 		

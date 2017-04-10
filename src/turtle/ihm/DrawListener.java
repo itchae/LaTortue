@@ -14,9 +14,10 @@ public class DrawListener implements ActionListener{
 	private JTextArea textCommand;
 	
 	public DrawListener(UndoClass T , JTextArea textCommand){
-		this.T=T;
+		this.T = T;
 		this.textCommand = textCommand;
 	}
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object o = e.getSource();
