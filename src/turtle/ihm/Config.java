@@ -19,10 +19,11 @@ public class Config extends JFrame{
 	private JButton debutant = new JButton("Debutant");
 	private JButton expert = new JButton("Expert");
 	private JLabel vue = new JLabel("Choisissez votre vue");
-	private JLabel tailleGrille = new JLabel("Choisissez la taille de la grille");
+	private JLabel tailleGrille = new JLabel("Choisissez le nombre de colonnes puis de ligne");
 	private JLabel configuration = new JLabel("Configuration");
-	private JSpinner taille = new JSpinner(new SpinnerNumberModel(3,3,20,1));
-
+	private JSpinner tailleCo = new JSpinner(new SpinnerNumberModel(3,3,20,1));
+	private JSpinner tailleLi = new JSpinner(new SpinnerNumberModel(3,3,20,1));
+	
 	public Config(){
 		super();
 		
@@ -38,7 +39,8 @@ public class Config extends JFrame{
 
 		
 		droite.add(tailleGrille);
-		droite.add(taille);
+		droite.add(tailleCo);
+		droite.add(tailleLi);
 
 		this.add(droite);
 		this.add(valid, BorderLayout.SOUTH);
@@ -48,6 +50,7 @@ public class Config extends JFrame{
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
+	
 	
 	
 	public static void main(String[] args) {
