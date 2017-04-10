@@ -39,7 +39,7 @@ public class EcranGauche extends JPanel {
 		}
 		else{
 			JButton button = new JButton ("Valider");
-			button.addActionListener(new LecteurListener(this.textCommand,t,error));
+			button.addActionListener(new LecteurListener(this.textCommand,t,error,grille,dessinMotif,afficheurCoul));
 			this.blocInstruction = button;
 		}
 	}

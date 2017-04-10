@@ -28,7 +28,7 @@ public class Vecteur {
 
 	@Override
 	public String toString() {
-		return "(x=" + this.x + ", y=" + this.y + ")";
+		return "<" + this.x + "," + this.y + ">";
 	}
 	
 	public static Vecteur somme(Vecteur v1 , Vecteur v2){

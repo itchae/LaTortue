@@ -4,6 +4,8 @@ import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Motif {
 
@@ -119,6 +121,25 @@ public class Motif {
 		motifs.add( new Motif(chemin));
 		
 		return motifs;
+	}
+	
+	public static Motif createMotif(String text){
+		//System.out.println(text);
+		List<Vecteur> chemin = new ArrayList<Vecteur>();
+		Pattern p = Pattern.compile("(<([0-9])+,([0-9])+>)");	//fomat <12,12><12,12>
+		Matcher m = p.matcher(text);
+		
+		while( m.find()){
+				String vect = m.group();
+				vect = vect.substring(1,vect.length()-1);
+
+				//System.out.println(vect);
+				String[] nb = vect.split(",");
+				int x = Integer.parseInt(nb[0]);
+				int y = Integer.parseInt(nb[1]);
+				chemin.add(new Vecteur(x,y));
+		}
+		return new Motif(chemin);
 	}
 	
 	

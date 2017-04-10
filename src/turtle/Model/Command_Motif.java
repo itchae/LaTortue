@@ -1,5 +1,7 @@
 package turtle.Model;
 
+import java.util.Iterator;
+
 public class Command_Motif extends Command {
 
 	private Motif ancienMotif;
@@ -24,7 +26,14 @@ public class Command_Motif extends Command {
 
 	@Override
 	public String toString() {
-		return "Motif"+"\n";
+		String txt = "Motif <";
+		Iterator<Vecteur> i = this.nouveauMotif.getIteratorDeplacement();
+		while(i.hasNext()){
+			Vecteur v = i.next();
+			txt += v;
+		}
+		txt += ">\n";
+		return txt;
 	}
 	
 	

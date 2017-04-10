@@ -6,9 +6,11 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JComponent;
 import javax.swing.JTextArea;
 
 import turtle.Model.Commands;
+import turtle.Model.Motif;
 import turtle.Model.UndoClass;
 
 public class LecteurListener implements ActionListener {
@@ -16,20 +18,28 @@ public class LecteurListener implements ActionListener {
 	private JTextArea command;
 	private UndoClass undo;
 	private LabelTempo error;
+	private  JComponent grille;
+	private DessinMotif motifActuel;
+	private JComponent couleur;
 
-	public LecteurListener(JTextArea command , UndoClass undo , LabelTempo error) {
+	public LecteurListener(JTextArea command , UndoClass undo , LabelTempo error ,JComponent grille,JComponent motifActuel,JComponent couleur) {
 		this.command = command;
 		this.undo = undo;
 		this.error = error;
+
+		this.grille = grille;
+		if( motifActuel instanceof DessinMotif){
+			this.motifActuel =(DessinMotif) motifActuel;
+		}
+		this.couleur = couleur;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		List<String[]> commands = splitTextCommand(this.command.getText());
-		if(this.verifTextCommand(commands)){
-			//comparaison et modification du undo
-			this.detectNewCommand(commands);
-			System.out.println(""+this.undo);
+		List<String[]> commandeText = Commands.splitTextCommand(this.command.getText());
+		if(Commands.verifTextCommand(commandeText)){
+			this.doCommand(commandeText);
+			this.updateComposant();
 		}
 		else{
 			this.error.showText("Il y a une erreur dans les commandes");
@@ -37,82 +47,63 @@ public class LecteurListener implements ActionListener {
 		
 	}
 	
-	private List<String[]> splitTextCommand(String textCommand){
-		String[] tmp = textCommand.split("\n");
-		List<String[]> commands = new ArrayList<String[]>();
-		
-		for(int i=0 ; i<tmp.length ; i++){
-			commands.add(tmp[i].split(" "));
+	private void updateComposant(){
+		this.grille.repaint();
+		try{
+			this.motifActuel.setMotif(this.undo.getTortue().getMotif());
+			this.motifActuel.repaint();
+		}
+		catch(NullPointerException e){
+			
+		}
+		this.couleur.setBackground(this.undo.getTortue().getColor());
+	}
+	
+	
+	
+	private void doCommand(List<String[]> nouv ){
+		this.undo.clear();
+		this.command.setText("");
+		boolean juste = true;
+		for(String[] ligne : nouv){
+			if(!this.addCommand(ligne)){
+				ligne[0] = "//"+ligne[0];
+				juste = false;
+			}
+			this.command.setText(this.command.getText()+ligne[0]);
+			for(int i=1 ; i<ligne.length ; i++){
+				this.command.setText(this.command.getText()+" "+ligne[i]);
+			}
+			this.command.setText(this.command.getText()+"\n");
+		}
+		if(!juste){
+			this.error.showText("Une commande a été mis en commentaire car elle cause la sorti de la tortue");
 		}
 		
-		return commands;
 	}
 	
-	private boolean verifTextCommand(List<String[]> commandes){
-		boolean juste = true;
-		for(String[] ligne : commandes){
-				try{
-					if(ligne[0] != ""){
-						Commands c = Commands.valueOf(ligne[0].toUpperCase());
-						juste = juste && verifArg(c,ligne);
-					}
-				}
-				catch(IllegalArgumentException e){
-					juste = false;
-					System.out.println("Command fause="+ligne[0]+"/");
-				}	
-		}		
-		return juste;
-	}
-	
-	private boolean verifArg (Commands c , String[] arg){
-		boolean juste = true;
-		switch(c){
-			case DRAW: if(arg.length == 2){
-							juste = arg[1].equalsIgnoreCase("true") || arg[1].equalsIgnoreCase("false");
-						}
-						else{
-							juste = false;
-						}
-				break;
-
-			case TURN:
-			case GO: if(arg.length == 2){
-							try{
-								int nb = Integer.parseInt(arg[1]);
-								juste = nb > 0;
-							}
-							catch(NumberFormatException e){
-								juste = false;
-							}
-						}
-						else{
-							juste = false;
-						}
-				break;
-			case COLOR: if(arg.length == 4){
-							try{
-								for(int i=1 ; i<4 ; i++){
-									int nb = Integer.parseInt(arg[i]);
-									juste = (nb >= 0 && nb<=255) && juste;
-								}
-							}
-							catch(NumberFormatException e){
-								juste = false;
-							}
-						}
-						else{
-							juste = false;
-						}
-				break;
-			default: System.err.println(c+" n'est pas codé");
-				break;
+	private boolean addCommand(String[] ligne){
+		boolean ok = true;
+		switch(Commands.valueOf(ligne[0].toUpperCase())){
+		case COLOR: int red = Integer.parseInt(ligne[1]);
+					int green = Integer.parseInt(ligne[2]);
+					int blue = Integer.parseInt(ligne[3]);
+					this.undo.addColorCommand(new Color(red,green,blue));
+			break;
+		case DRAW: this.undo.addDrawCommand(ligne[1].equalsIgnoreCase("true"));
+			break;
+		case GO:	ok = this.undo.addGoCommand(Integer.parseInt(ligne[1]));
+			break;
+		case TURN:	ok = this.undo.addTurnCommand(Integer.parseInt(ligne[1]));
+			break;
+		case MOTIF: Motif k = Motif.createMotif(ligne[1].substring(1, ligne[1].length()-1));
+			ok = this.undo.addMotifCommand(k);
+			break;
+		default: System.err.println(ligne[0]+" n'est pas codé");
+			break;
+		
 		}
-		return juste;
-	}
-	
-	private void detectNewCommand(List<String[]> nouv ){
-		//trouve une solution../.
+		return ok;
 	}
 	
 	
