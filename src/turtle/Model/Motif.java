@@ -126,7 +126,7 @@ public class Motif {
 	public static Motif createMotif(String text){
 		//System.out.println(text);
 		List<Vecteur> chemin = new ArrayList<Vecteur>();
-		Pattern p = Pattern.compile("(<([0-9])+,([0-9])+>)");	//fomat <12,12><12,12>
+		Pattern p = Pattern.compile("(<(-?[0-9])+,(-?[0-9])+>)");	//fomat <12,12><12,12>
 		Matcher m = p.matcher(text);
 		
 		while( m.find()){

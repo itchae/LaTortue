@@ -95,7 +95,7 @@ public enum Commands {
 	static private boolean verifArg_Motif(String[] arg){
 		boolean juste = true;
 		 if(arg.length == 2){
-			 Pattern p = Pattern.compile("<(<([0-9])+,([0-9])+>)+>");	//fomat <<12,12><12,12>>
+			 Pattern p = Pattern.compile("<(<(-?[0-9])+,(-?[0-9])+>)+>");	//fomat <<12,12><12,12>>
 			 Matcher m = p.matcher(arg[1]);
 			 juste = m.matches();
 			 
