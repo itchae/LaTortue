@@ -6,6 +6,7 @@ import java.util.List;
 import javax.swing.SwingUtilities;
 
 import turtle.Model.UndoClass;
+import turtle.ihm.listener.RepeatListener;
 
 public class DrawThread extends Thread {
 

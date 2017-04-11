@@ -8,6 +8,7 @@ import javax.swing.SwingUtilities;
 
 import turtle.Model.Tortue;
 import turtle.Model.UndoClass;
+import turtle.ihm.listener.ResizeWindow;
 
 public class FenetrePrincipal extends JFrame {
 	

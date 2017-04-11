@@ -17,6 +17,10 @@ import javax.swing.JTextArea;
 
 import turtle.Model.Motif;
 import turtle.Model.UndoClass;
+import turtle.ihm.listener.InitListener;
+import turtle.ihm.listener.QuitActionListener;
+import turtle.ihm.listener.RepeatListener;
+import turtle.ihm.listener.UndoListener;
 
 public class EcranDroite extends JPanel {
 	

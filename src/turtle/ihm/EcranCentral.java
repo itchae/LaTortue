@@ -45,6 +45,7 @@ public class EcranCentral extends Grille {
 		g.fillOval((int)((posTortue.getX()-0.5)*colonneTaille),(int) ((this.getNbligne()-(posTortue.getY()+0.5))*ligneTaille), colonneTaille, ligneTaille);
 		
 	}
+	
 	private void drawChemin(Graphics gra){
 		Vecteur position = this.origine;
 		Graphics2D g = (Graphics2D)gra.create();

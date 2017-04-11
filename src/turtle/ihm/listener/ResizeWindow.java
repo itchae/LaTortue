@@ -1,4 +1,4 @@
-package turtle.ihm;
+package turtle.ihm.listener;
 
 import java.awt.Dimension;
 import java.awt.event.ComponentAdapter;

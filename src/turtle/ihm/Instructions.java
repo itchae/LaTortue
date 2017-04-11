@@ -17,6 +17,11 @@ import javax.swing.JSlider;
 import javax.swing.JTextArea;
 
 import turtle.Model.UndoClass;
+import turtle.ihm.listener.ColorListener;
+import turtle.ihm.listener.DrawListener;
+import turtle.ihm.listener.GoListener;
+import turtle.ihm.listener.SliderListener;
+import turtle.ihm.listener.TurnListener;
 
 public class Instructions extends JPanel{
 

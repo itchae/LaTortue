@@ -1,4 +1,4 @@
-package turtle.ihm;
+package turtle.ihm.listener;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,8 +8,9 @@ import javax.swing.JComponent;
 import javax.swing.JTextArea;
 
 import turtle.Model.UndoClass;
+import turtle.ihm.DessinMotif;
 
-public class InitListener  implements ActionListener{
+public class UndoListener implements ActionListener {
 
 	private UndoClass undoModule;
 	private JComponent grille;
@@ -18,7 +19,7 @@ public class InitListener  implements ActionListener{
 	private JComponent couleur;
 	private JCheckBox drawBox;
 	
-	public InitListener(UndoClass undo , JComponent grille , JTextArea text ,JComponent motifActuel , JComponent couleur ,JCheckBox draw) {
+	public UndoListener(UndoClass undo , JComponent grille , JTextArea text ,JComponent motifActuel , JComponent couleur ,JCheckBox draw) {
 		this.undoModule = undo;
 		this.grille = grille;
 		this.textCommand = text;
@@ -26,10 +27,9 @@ public class InitListener  implements ActionListener{
 		this.couleur = couleur;
 		this.drawBox = draw;
 	}
-	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		this.undoModule.clear();
+		this.undoModule.undo();
 		//refresh tout
 		this.grille.repaint();
 		this.textCommand.setText(""+this.undoModule);

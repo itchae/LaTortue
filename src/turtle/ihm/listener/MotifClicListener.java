@@ -1,4 +1,4 @@
-package turtle.ihm;
+package turtle.ihm.listener;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JTextArea;
 
 import turtle.Model.UndoClass;
+import turtle.ihm.DessinMotif;
 
 public class MotifClicListener extends MouseAdapter {
 	

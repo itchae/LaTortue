@@ -12,6 +12,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import turtle.Model.UndoClass;
+import turtle.ihm.listener.LecteurListener;
 
 public class EcranGauche extends JPanel {
 

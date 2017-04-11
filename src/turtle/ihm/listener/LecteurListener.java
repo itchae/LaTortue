@@ -1,4 +1,4 @@
-package turtle.ihm;
+package turtle.ihm.listener;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -11,6 +11,8 @@ import javax.swing.JTextArea;
 import turtle.Model.Commands;
 import turtle.Model.Motif;
 import turtle.Model.UndoClass;
+import turtle.ihm.DessinMotif;
+import turtle.ihm.LabelTempo;
 
 public class LecteurListener implements ActionListener {
 	

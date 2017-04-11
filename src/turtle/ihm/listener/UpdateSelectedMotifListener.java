@@ -1,7 +1,9 @@
-package turtle.ihm;
+package turtle.ihm.listener;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+import turtle.ihm.DessinMotif;
 
 
 public class UpdateSelectedMotifListener extends MouseAdapter {

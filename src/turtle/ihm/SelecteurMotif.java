@@ -7,6 +7,8 @@ import javax.swing.JTextArea;
 
 import turtle.Model.Motif;
 import turtle.Model.UndoClass;
+import turtle.ihm.listener.MotifClicListener;
+import turtle.ihm.listener.UpdateSelectedMotifListener;
 
 public class SelecteurMotif extends JPanel {
 

@@ -1,4 +1,4 @@
-package turtle.ihm;
+package turtle.ihm.listener;
 
 import javax.swing.JLabel;
 import javax.swing.JSlider;

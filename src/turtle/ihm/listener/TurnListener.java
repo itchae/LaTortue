@@ -1,34 +1,35 @@
-package turtle.ihm;
+package turtle.ihm.listener;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JComponent;
 import javax.swing.JSlider;
 import javax.swing.JTextArea;
 
 import turtle.Model.UndoClass;
+import turtle.ihm.LabelTempo;
 
-
-public class GoListener implements ActionListener{
+public class TurnListener implements ActionListener{
 
 	private UndoClass T;
 	private JSlider S;
-	private EcranCentral grille;
+	private JComponent dessinMotif;
 	private JTextArea textCommand;
 	private LabelTempo error;
 	
-	public GoListener(UndoClass T, JSlider S ,EcranCentral grille,JTextArea textcommand,LabelTempo textError){
+	public TurnListener(UndoClass T, JSlider S, JComponent dessinMotif ,JTextArea textcommand,LabelTempo error){
 		this.T = T;
 		this.S = S;
-		this.grille = grille;
+		this.dessinMotif = dessinMotif;
 		this.textCommand = textcommand;
-		this.error = textError;
+		this.error = error;
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(T.addGoCommand(S.getValue())){
-			this.grille.repaint();
+		if(T.addTurnCommand(S.getValue())){
+			dessinMotif.repaint();
 			this.textCommand.setText(""+T);
 		}
 		else{

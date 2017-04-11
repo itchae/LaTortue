@@ -12,6 +12,8 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingUtilities;
 
+import turtle.ihm.listener.ConfigListener;
+
 public class Config extends JFrame{
 
 
