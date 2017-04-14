@@ -31,7 +31,7 @@ public class FenetrePrincipal extends JFrame {
 		this.central = new EcranCentral(xMaxGrid,yMaxGrid, this.undo);
 		this.droite = new EcranDroite(this.undo,this);
 		this.gauche = new EcranGauche(debutant,this.undo , this.droite.getMotifActuel() , this.droite.getColorPanel(),this.central,this.textEtat);
-		this.droite.createUndoListener(this.central, this.gauche.getTextCommand(),this.droite.getMotifActuel(),this.droite.getColorPanel(),this.gauche.getDrawBox());
+		this.droite.createUndoListener(this.central, this.gauche.getTextCommand(),this.gauche.getDrawBox());
 		
 		this.add(this.central);
 		this.add(this.droite,BorderLayout.EAST);

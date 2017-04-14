@@ -44,14 +44,26 @@ public class Command_Go extends Command {
 		this.getTortue().ungo(this.getNb());
 	}
 	
+	/**
+	 * les points de passage de la tortue pendant ce go
+	 * @return
+	 */
 	public List<Vecteur> getRoute(){
 		return this.route;
 	}
 
+	/**
+	 * savoir si le draw de la tortue était activer ou pas
+	 * @return
+	 */
 	public boolean isDraw() {
 		return this.draw;
 	}
 
+	/**
+	 * la couleur de la tortue pendant ce deplacement
+	 * @return
+	 */
 	public Color getDrawColor() {
 		return this.drawColor;
 	}

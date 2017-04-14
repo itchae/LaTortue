@@ -10,6 +10,10 @@ public class UpdateSelectedMotifListener extends MouseAdapter {
 	
 	private DessinMotif motif;
 
+	/**
+	 * permet de copier un motif sur un DessinMotif en cliquant sur le Dessin motif associé
+	 * @param motif le dessin motif qui va etre modifié
+	 */
 	public UpdateSelectedMotifListener(DessinMotif motif){
 		this.motif = motif;
 	}

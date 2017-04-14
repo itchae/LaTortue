@@ -16,6 +16,10 @@ public class Direction {
 		}
 	}
 	
+	/**
+	 * 
+	 * @return Iterateur qui permet le parcours du chemin
+	 */
 	public Iterator<Vecteur> getIteratorDeplacement(){
 		return this.chemin.iterator();
 	}

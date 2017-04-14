@@ -37,6 +37,9 @@ public class DessinMotif extends Grille {
 		
 	}
 	
+	/**
+	 * calucle la taille de la grille qui est nécessaire au dessin du motif
+	 */
 	private void calculTailleGrille(){
 		Rectangle rectMinimal = motif.getVectDiagonalRect();
 		this.setNbligne(rectMinimal.height + 2);
@@ -56,6 +59,9 @@ public class DessinMotif extends Grille {
 		this.repaint();			//force a redessiner
 	}
 	
+	/**
+	 * change la rotation du motif
+	 */
 	public void turn(){
 		this.motif.turn();
 		this.repaint();
@@ -72,7 +78,6 @@ public class DessinMotif extends Grille {
 		Graphics2D g = (Graphics2D) gra;
 		
 		//calcul du pt origine et taille ligne et colonne
-		//la taille de la grille ne change pas selon la rotation du motif
 		//on concidere (0,0) au centre de l'écran
 		Rectangle rect = this.motif.getVectDiagonalRect();
 		Vecteur point = new Vecteur(-rect.x -(rect.width/2) , -rect.y -(rect.height/2));	//calcul du decalage pour centrer la figure sur le (0.0) fictif

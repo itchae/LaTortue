@@ -75,7 +75,12 @@ public class Instructions extends JPanel{
 		this.setVisible(true);
 	}
 	
-	public Box boxTurn(String str){
+	/**
+	 * créé un slider et son button
+	 * @param str le nom du bouton
+	 * @return
+	 */
+	private Box boxTurn(String str){
 		Box fois = Box.createHorizontalBox();
 		
 		
@@ -98,7 +103,10 @@ public class Instructions extends JPanel{
 		return fois;
 	}
 
-	public static JPanel panelCoul(Color color, JComponent afficheur, UndoClass T , JTextArea textCommand , JComponent grille){
+	/**
+	 * crée un panel de couleur cliquable
+	 */
+	private static JPanel panelCoul(Color color, JComponent afficheur, UndoClass T , JTextArea textCommand , JComponent grille){
 		JPanel coulPane = new JPanel();
 		coulPane.setBackground(color);
 		coulPane.setPreferredSize(new Dimension(30,30));
@@ -112,6 +120,10 @@ public class Instructions extends JPanel{
 		this.panelCouleur.setPreferredSize(new Dimension((int) (preferredSize.width*0.8),preferredSize.height));
 	}
 	
+	/**
+	 * renvoi toute les couleurs qu'on veut pour faire les pannels
+	 * @return
+	 */
 	private List<Color> getAllColor(){
 		List<Color> couleur = new ArrayList<Color>();
 		couleur.add(Color.BLACK);

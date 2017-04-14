@@ -14,6 +14,12 @@ public class DrawThread extends Thread {
 	private UndoClass undo;
 	private RepeatListener listener;
 	
+	/**
+	 * permet de refaire le dessin de la tortue etape par etape
+	 * @param v
+	 * @param u
+	 * @param list
+	 */
 	public DrawThread(EcranCentral v , UndoClass u , RepeatListener list) {
 		this.grille = v;
 		this.undo = u;

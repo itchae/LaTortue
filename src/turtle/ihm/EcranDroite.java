@@ -82,13 +82,18 @@ public class EcranDroite extends JPanel {
 		return this.couleurActuel;
 	}
 	
-	
-	public void createUndoListener(JComponent grille , JTextArea text , JComponent motifActuel , JComponent couleur,JCheckBox drawBox){
+	/**
+	 * permet de faire les liaisons avce les element de gauche
+	 * @param grille
+	 * @param text la zone de texte pour les commande
+	 * @param drawBox la checkbox d'activation du draw
+	 */
+	public void createUndoListener(JComponent grille , JTextArea text ,JCheckBox drawBox){
 		if(this.buttons.get(1).getActionListeners().length == 0){
-			this.buttons.get(1).addActionListener(new UndoListener(undo,grille,text,motifActuel,couleur,drawBox));
-			this.buttons.get(0).addActionListener(new InitListener(undo,grille,text,motifActuel,couleur,drawBox));
+			this.buttons.get(1).addActionListener(new UndoListener(undo,grille,text,motifActuel,this.couleurActuel,drawBox));
+			this.buttons.get(0).addActionListener(new InitListener(undo,grille,text,motifActuel,this.couleurActuel,drawBox));
 			this.buttons.get(2).addActionListener(new RepeatListener(grille,undo));
-			this.setTextCommandRefresh(text);
+			this.selecteur.addTextCommandRefresh(text);
 		}
 		else{
 			System.err.println("Le bouton undo a déjà un action listener");
@@ -96,9 +101,6 @@ public class EcranDroite extends JPanel {
 		
 	}
 	
-	private void setTextCommandRefresh(JTextArea text){
-		this.selecteur.addTextCommandRefresh(text);
-	}
 
 	@Override
 	public void setPreferredSize(Dimension preferredSize) {

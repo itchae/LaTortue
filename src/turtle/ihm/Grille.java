@@ -6,29 +6,9 @@ import java.awt.Graphics;
 import javax.swing.JComponent;
 import javax.swing.border.LineBorder;
 
-/*import java.awt.Dimension;
-import javax.swing.JFrame;
-import javax.swing.SwingUtilities;*/
 
 abstract class Grille extends JComponent {
 	
-	/*public static void main(String[] args) {
-
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run () {makeIt();}
-		});
-	}*/
-	 
-	
-	/*protected static void makeIt() {
-
-		JFrame frameGrille = new JFrame("Grille");
-		frameGrille.setPreferredSize(new Dimension(200,200));
-		frameGrille.add(new Grille(4, 5));
-		frameGrille.pack();
-		frameGrille.setVisible(true);
-		frameGrille.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	}*/
 
 	private static final long serialVersionUID = -7649907374135164257L;
 	private int nbligne;

@@ -32,7 +32,15 @@ public class EcranGauche extends JPanel {
 		this.add(vBox);
 	}
 
-	
+	/**
+	 * ajoute le bloc d'instruction de la vue
+	 * @param debutant mode du bloc d'instruction 
+	 * @param t le module undo
+	 * @param dessinMotif L'afficheur du motif actuelle
+	 * @param afficheurCoul L'afficheur de la couleur actuelle
+	 * @param grille la grille central
+	 * @param error le label d'erreur
+	 */
 	private void createBlocInstruction(boolean debutant , UndoClass t ,JComponent dessinMotif, JComponent afficheurCoul,EcranCentral grille,LabelTempo error){
 		if(debutant){
 			this.blocInstruction = new Instructions(t,dessinMotif,afficheurCoul,grille,this.textCommand,error);

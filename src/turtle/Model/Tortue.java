@@ -46,6 +46,12 @@ public class Tortue {
 		this.motif = motif;
 	}
 
+	/**
+	 * verifie si la tortue sort de la grille
+	 * @param xdep le futur x de la trotue
+	 * @param ydep le futur y de la tortue
+	 * @throws OutOfGridException signale la sortie de la grille donc l'abandon du go
+	 */
 	public void goException(int xdep, int ydep) throws OutOfGridException{
 		if(xdep> this.xmax || ydep >this.ymax || xdep<0 || ydep<0){
 			throw new OutOfGridException();
@@ -54,8 +60,7 @@ public class Tortue {
 	
 	/**
 	 * Execute go, si draw = true alors dessine motif sinon juste déplacement tortue 
-	 * @param k
-	 * @throws OutOfGridException 
+	 * @throws OutOfGridException signale la sortie de la grille donc l'abandon du go
 	 */
 	public List<Vecteur> go() throws OutOfGridException {
 		List<Vecteur> liste = new ArrayList<Vecteur>();
@@ -81,7 +86,7 @@ public class Tortue {
 	/**
 	 * Execute k fois go
 	 * @param k
-	 * @throws OutOfGridException 
+	 * @throws OutOfGridException  signale la sortie de la grille donc l'abandon du go
 	 */
 	public List<Vecteur> go(int k) throws OutOfGridException {
 		List<Vecteur> liste = new ArrayList<Vecteur>();
@@ -98,6 +103,10 @@ public class Tortue {
 		return liste;
 	}
 	
+	/**
+	 * annule un go k fois
+	 * @param k
+	 */
 	public void ungo(int k){
 		Vecteur retour = this.motif.getVectMouvement();
 		retour = new Vecteur(-k*retour.getX(),-k*retour.getY());
@@ -107,7 +116,6 @@ public class Tortue {
 	
 	/**
 	 * Tourne le motif
-	 * @param k
 	 */
 	public void turn() {
 		this.motif.turn();

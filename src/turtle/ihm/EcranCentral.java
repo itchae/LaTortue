@@ -30,6 +30,12 @@ public class EcranCentral extends Grille {
 		this.drawChemin(g);
 	}
 	
+	/**
+	 * dessine la torue
+	 * @param gra module graphics
+	 * @param pos position de la tortue
+	 * @param coul couleur de la tortue
+	 */
 	private void dessinTortue(Graphics gra , Vecteur pos ,Color coul){
 		Graphics2D g = (Graphics2D)gra.create();
 		Vecteur posTortue =  pos;
@@ -46,6 +52,10 @@ public class EcranCentral extends Grille {
 		
 	}
 	
+	/**
+	 * dessine le chemin de la tortue + la tortue
+	 * @param gra
+	 */
 	private void drawChemin(Graphics gra){
 		Vecteur position = this.origine;
 		Graphics2D g = (Graphics2D)gra.create();
@@ -77,6 +87,12 @@ public class EcranCentral extends Grille {
 		this.dessinTortue(g,position,coulTortue);
 	}
 	
+	/**
+	 * dessine un vecteur sur la grille
+	 * @param origine
+	 * @param fin
+	 * @param g
+	 */
 	private void drawLine(Vecteur origine ,Vecteur fin , Graphics2D g){
 		int colonneTaille = this.getTailleColonne();
 		 int ligneTaille = this.getTailleLigne();
@@ -88,6 +104,10 @@ public class EcranCentral extends Grille {
 		 g.drawLine(xDeb, yDeb, xFin, yFin);
 	}
 
+	/**
+	 * modifie le cran d'arret du dessin du chemin de la tortue
+	 * @param arretNbPointAvant
+	 */
 	public void setArretNbPointAvant(int arretNbPointAvant) {
 		if(arretNbPointAvant >=0){
 			this.arretNbPointAvant = arretNbPointAvant;

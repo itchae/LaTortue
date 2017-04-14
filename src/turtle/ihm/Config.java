@@ -68,7 +68,10 @@ public class Config extends JFrame{
 	}
 	
 
-	
+	/**
+	 * Main principal de l'application
+	 * @param args
+	 */
 	public static void main(String[] args) {
 
 	SwingUtilities.invokeLater(new Runnable() {

@@ -30,6 +30,10 @@ public class SelecteurMotif extends JPanel {
 		}
 	}
 	
+	/**
+	 * ajoute le text area pour la mise a jour du texte des commande à la selection d'un motif
+	 * @param text
+	 */
 	public void addTextCommandRefresh(JTextArea text){
 		this.motifListener.setTextCommand(text);
 	}

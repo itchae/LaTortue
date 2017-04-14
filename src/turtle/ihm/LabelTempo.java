@@ -30,11 +30,15 @@ public class LabelTempo extends JLabel  {
 			
 		});
 	}
-	
+
 	public LabelTempo(int time){
 		this("",time);
 	}
 	
+	/**
+	 * affiche un texte durant un temps limité
+	 * @param txt
+	 */
 	public void showText(String txt){
 		this.setText(txt);
 		this.affiche();
@@ -71,7 +75,9 @@ public class LabelTempo extends JLabel  {
 			
 		}
 
-
+		/**
+		 * rend le texte visible pendant un certain temps
+		 */
 		public void affiche() {
 			this.setVisible(true);
 			this.timer.start();

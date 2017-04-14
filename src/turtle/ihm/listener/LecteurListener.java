@@ -61,7 +61,10 @@ public class LecteurListener implements ActionListener {
 	}
 	
 	
-	
+	/**
+	 * execute les commande du texte
+	 * @param nouv
+	 */
 	private void doCommand(List<String[]> nouv ){
 		this.undo.clear();
 		this.command.setText("");
@@ -83,6 +86,11 @@ public class LecteurListener implements ActionListener {
 		
 	}
 	
+	/**
+	 * ajoute les commande au module undo
+	 * @param ligne
+	 * @return
+	 */
 	private boolean addCommand(String[] ligne){
 		boolean ok = true;
 		switch(Commands.valueOf(ligne[0].toUpperCase())){

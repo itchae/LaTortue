@@ -8,11 +8,21 @@ import java.util.regex.Pattern;
 public enum Commands {
 	COLOR,DRAW,GO,TURN,MOTIF;
 	
+	/**
+	 * verifie la syntaxes d'un texte pour détecter les commandes
+	 * @param text
+	 * @return
+	 */
 	static public boolean verifTextCommand(String text){
 		List<String[]> commandeText = splitTextCommand(text);
 		return verifTextCommand(commandeText);
 	}
 	
+	/**
+	 * sépare le texte par ligne. Chaque ligne est séparé par espaces
+	 * @param textCommand
+	 * @return
+	 */
 	static public List<String[]> splitTextCommand(String textCommand){
 		String[] tmp = textCommand.split("\n");
 		List<String[]> commands = new ArrayList<String[]>();
@@ -24,7 +34,11 @@ public enum Commands {
 		return commands;
 	}
 	
-	
+	/**
+	 * vérifie la syntaxes des commandes
+	 * @param commandes
+	 * @return
+	 */
 	static public boolean verifTextCommand(List<String[]> commandes){
 		boolean juste = true;
 		for(String[] ligne : commandes){
@@ -42,7 +56,11 @@ public enum Commands {
 		return juste;
 	}
 	
-	
+	/**
+	 * vérifie les argument d'une commande draw
+	 * @param arg la ligne de commande
+	 * @return
+	 */
 	static private boolean verifArg_Draw(String[] arg){
 		boolean juste;
 		if(arg.length == 2){
@@ -54,7 +72,11 @@ public enum Commands {
 		return juste;
 	}
 	
-	
+	/**
+	 * vérifie les argument d'une commande go ou turn
+	 * @param arg la ligne de commande
+	 * @return
+	 */
 	static private boolean verifArg_GoTurn(String [] arg){
 		boolean juste;
 		if(arg.length == 2){
@@ -72,7 +94,11 @@ public enum Commands {
 		return juste;
 	}
 	
-	
+	/**
+	 * vérifie les argument d'une commande color
+	 * @param arg la ligne de commande
+	 * @return
+	 */
 	static private boolean verifArg_Color(String[] arg){
 		boolean juste = true;
 		 if(arg.length == 4){
@@ -92,6 +118,11 @@ public enum Commands {
 		return juste;
 	}
 	
+	/**
+	 * vérifie les argument d'une commande Motif
+	 * @param arg la ligne de commande
+	 * @return
+	 */
 	static private boolean verifArg_Motif(String[] arg){
 		boolean juste = true;
 		 if(arg.length == 2){
@@ -106,6 +137,11 @@ public enum Commands {
 		return juste;
 	}
 
+	/**
+	 * vérifie les argument des commandes
+	 * @param arg la ligne de commande
+	 * @return
+	 */
 	static private boolean verifArg (Commands c , String[] arg){
 		boolean juste = true;
 		switch(c){

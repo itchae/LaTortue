@@ -24,7 +24,10 @@ public class Motif {
 		}
 	}
 	
-	
+	/**
+	 * verifie si d est déjà dans la liste des rotation sinon l'ajoute
+	 * @param d
+	 */
 	private void addDirection(Direction d){
 		if(!this.listDir.contains(d)){
 			this.listDir.add(d);
@@ -39,6 +42,10 @@ public class Motif {
 		this.dirActuel = (this.dirActuel+1)%this.listDir.size();		
 	}
 	
+	/**
+	 * annule un turn
+	 * @param k nb turn annule
+	 */
 	public void unturn(int k) {
 		k = k%this.listDir.size();
 		this.dirActuel = (this.dirActuel+(this.listDir.size()-k))%this.listDir.size();		
@@ -57,7 +64,10 @@ public class Motif {
 	}
 	
 	
-	
+	/**
+	 * renvoi l'iterator qui permet de parcourir le chemin
+	 * @return
+	 */
 	public Iterator<Vecteur> getIteratorDeplacement(){
 		return this.listDir.get(this.dirActuel).getIteratorDeplacement();
 	}
@@ -81,7 +91,10 @@ public class Motif {
 		return this.listDir.get(this.dirActuel).getVectMouvement();
 	}
 	
-	
+	/**
+	 * liste des motif par défault
+	 * @return
+	 */
 	public static List<Motif> getDefaultMotif(){
 		List<Motif> motifs = new ArrayList<Motif>();
 		List<Vecteur> chemin = new ArrayList<Vecteur>();
@@ -123,6 +136,11 @@ public class Motif {
 		return motifs;
 	}
 	
+	/**
+	 * genere un motif a partir du text
+	 * @param text configuration du chemin
+	 * @return
+	 */
 	public static Motif createMotif(String text){
 		//System.out.println(text);
 		List<Vecteur> chemin = new ArrayList<Vecteur>();
