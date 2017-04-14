@@ -85,8 +85,15 @@ public class Tortue {
 	 */
 	public List<Vecteur> go(int k) throws OutOfGridException {
 		List<Vecteur> liste = new ArrayList<Vecteur>();
-		for(int i = 0 ; i<k ; i++){
-			liste.addAll(this.go());
+		Vecteur depart = this.coordonnee;
+		try{
+			for(int i = 0 ; i<k ; i++){
+				liste.addAll(this.go());
+			}
+		}
+		catch(OutOfGridException e){
+			this.coordonnee = depart;
+			throw e;
 		}
 		return liste;
 	}
